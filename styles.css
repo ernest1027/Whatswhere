@@ -6,3 +6,12 @@
 .mappagecontainer {
     list-style-type: none;
 }
+
+.icon-sq-button {
+    width: 32px;
+    height: 32px;
+}
+
+.store-card {
+    max-width: 750px;
+}
