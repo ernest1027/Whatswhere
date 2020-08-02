@@ -15,3 +15,12 @@
 .store-card {
     max-width: 750px;
 }
+
+.skyblue{
+	background-color: #87ceeb;
+}
+
+#availContainer{
+	height: 200px;
+	background:yellow;
+}
