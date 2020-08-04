@@ -1,21 +1,22 @@
 function changeColor(){
 	let avail = document.getElementById("Availability").value;
-	if(avail==0){
-		document.getElementById("availContainer").style.backgroundColor = "red";
+	let r, g, b;
+	if(avail > 50){
+		r = Math.floor(255 - ((avail-50)*2 *2.55));
+		g = 255
+		b = 100;
 	}
-	if(avail==1){
-		document.getElementById("availContainer").style.backgroundColor = "orange";
+	else
+	{
+		r = 255;
+		g = Math.floor((avail)*2.55*2);
+		b = 100;
 	}
-	if(avail==2){
-		document.getElementById("availContainer").style.backgroundColor = "yellow";
-	}
-	if(avail==3){
-		document.getElementById("availContainer").style.backgroundColor = "green";
-	}
-	if(avail==4){
-		document.getElementById("availContainer").style.backgroundColor = "green";
-	}
+	
+ 
+	document.getElementById("availContainer").style.background = "rgb("+r+","+g+","+b+")"; 
+	
 	
 }
 var a = document.getElementById("Availability");
-a.addEventListener('mouseup', changeColor);
+a.addEventListener('input', changeColor);

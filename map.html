@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Map</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="map.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+  crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiHfol2cwmJELs70oalCgdg94syFcM4nc&callback=initMap">
-  </script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <script defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiHfol2cwmJELs70oalCgdg94syFcM4nc&callback=initMap">
+</script>
+<script src="map.js"></script>
 </head>
-<body style="overflow: hidden">
+
+<body class="vh-100 d-flex flex-column">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,39 +53,43 @@
     </div>
   </nav>
   
-  <div class="container-fluid">
-    <div class="row" style="height:92vh">
-      <div class="col-sm-6 jumbotron no-float">
-        <div class="container">
-          <div class="md-form active-cyan-2 mb-3">
-            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-          </div>
-        </div>
-        <div class="jumbotron h-100">
-          <div class="scrollclass h-100">
-            <div class="card storecard shadow">
-              <div class="row card-body">
-                <img class="col-sm-3" src="https://media1.s-nbcnews.com/i/newscms/2019_49/3133051/191204-dollar-general-se-132p_be973efa5ab4c4c36252c1b2464e41d0.jpg" alt="Store Image"/>
-                <div class="col-sm-6">
-                   <h5 class="card-title">THIS IS A STORE NAME</h5>
-                    <p class="card-text">1 Main Street, Somewhere</p>
-                    <a href="#" class="btn btn-primary">MAPS INTERATION BUTTON (MAYBE REMOVE ON MOBILE?)</a>
-                 </div>
-             </div>
+  <div class="container-fluid flex-fill d-flex">
+    <div class="row flex-fill">
+      <div class="col-lg-6 mt-3">
+        <div>
+          <div class="scrollclass pb-3">
+            <div class="md-form shadow active-cyan-2 mt-3 mb-3 ml-5 mr-5 sticky-top">
+              <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            </div>
+            <div class="card shadow ml-3 mr-3 mb-4">
+              <div class="d-flex">
+                <div class="img-square-wrapper">
+                  <img
+                  src="https://www.supermarketnews.com/sites/supermarketnews.com/files/styles/article_featured_retina/public/Loblaws-supermarket-storefront.png"
+                  style="height: 180px; width: 300px;">
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">Loblaws</h4>
+                  <p class="card-text">10 min drive</p>
+                </div>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted"
+                style="padding-right: 10px; float: left; height: 30px; line-height: 30px; text-align: center;">PROMOTED</small>
+                <div class="text-right" style="float: right;">
+                  <button type="button" class="btn btn-outline-primary btn-sm icon-sq-button"><i
+                    class="fa fa-bookmark"></i></button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-sm-6">
-        <div id="map"></div>
-        <script>
-          map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 8
-          });
-        </script>
+        <div id="map-container-google-1" class="z-depth-1-half map-container col-lg-6 col-12 mt-3 mb-3 mh-50">
+          <div id="map"></div>
+        </div>
       </div>
     </div>
-  </div>
-</body> 
-</html>
+  </body>
+  
+  </html>

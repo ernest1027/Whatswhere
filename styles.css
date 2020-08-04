@@ -1,6 +1,5 @@
 .scrollclass{
-    height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 #map {
@@ -10,10 +9,6 @@
 .icon-sq-button {
     width: 32px;
     height: 32px;
-}
-
-.custom-card {
-    max-width: 750px;
 }
 
 .skyblue{
