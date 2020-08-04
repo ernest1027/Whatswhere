@@ -5,5 +5,22 @@
 
 #map {
     height: 100%;
-  }
+}
 
+.icon-sq-button {
+    width: 32px;
+    height: 32px;
+}
+
+.custom-card {
+    max-width: 750px;
+}
+
+.skyblue{
+	background-color: #87ceeb;
+}
+
+#availContainer{
+	height: 200px;
+	background:yellow;
+}

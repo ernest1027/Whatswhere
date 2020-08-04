@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Pls give us monies thanks</title>
+  <title>About us</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
@@ -9,7 +9,7 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="styles.css">
-  <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript" src="crowdsourcePage.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </head>
 
@@ -48,58 +48,40 @@
       </ul>
     </div>
   </nav>
-  <div class="jumbotron text-center">
-    <h1>INSERT LOGO HERE</h1>
-    <p>PROJECT CAPTION</p>
+  <div class="jumbotron text-center skyblue">
+    <h1>Crowdsource Page</h1>
+    <p>Submit information to earn points and help others!</p>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6  col-sm-12">
-        <h3>Column 1</h3>
-        <p>Lorem ipsum dolor..</p>
+  <div class="row">
+    <div class="col-lg-6 col-sm-12">
+      <div class="offset-md-4">
+      <h3>Select Product</h3>
       </div>
-      <div class="col-lg-6 col-sm-12">
-        <h3>Column 2</h3>
-        <p>Lorem ipsum dolor..</p>
+          <div class="input-group mb-3">
+
+              <input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username">
+              <div class="input-group-append">
+              </div>
+          </div>
+    </div>
+    
+    <div class="col-lg-6 col-sm-12">
+     <div class="offset-md-4">
+      <h3>Select Store</h3>
       </div>
+          <div class="input-group mb-3">
+              
+              <input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username">
+              <div class="input-group-append">
+              </div>
+          </div>
     </div>
   </div>
-  
-  <div class="jumbotron">
-    <div class="md-form active-cyan-2 mb-3">
-      <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-    </div>
-  </div>
-  <div class= "jumbotron">
-    <div class="scrollclass">
-        <div class="card col-lg-6 col-sm-12">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card col-lg-6 col-sm-12" >
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card col-lg-6 col-sm-12">
-          <div class="card-header">
-            Quote
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote mb-0">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-              <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-            </blockquote>
-          </div>
-        </div>
-      </div>
+  <div class="container " id= "availContainer">
+    <label for="Availability">Availability</label>
+    <input type="range" class="custom-range"style="margin-width: 10px"  min="0" max="4" id="Availability">
+    <input type="text" class="form-control" style="margin-width: 10px" placeholder="Price" aria-label="Price" aria-describedby="basic-addon1">
+    <input class="btn btn-primary"style="margin-width: 10px"  type="submit" value="Submit">
   </div>
 </body> 
 </html>
