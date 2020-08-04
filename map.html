@@ -6,12 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="map.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiHfol2cwmJELs70oalCgdg94syFcM4nc&callback=initMap">
+  </script>
 </head>
-<body>
+<body style="overflow: hidden">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,47 +48,39 @@
     </div>
   </nav>
   
-  <ul class="mappagecontainer">
-    <li>
-      <div class="jumbotron">
-        <div class="md-form active-cyan-2 mb-3">
-          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-        </div>
-      </div>
-      <div class= "jumbotron">
-        <div class="scrollclass">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 jumbotron no-float">
+        <div class="container">
+          <div class="md-form active-cyan-2 mb-3">
+            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
           </div>
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div><div class="card">
-            <div class="card-header">
-              Quote
-            </div>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-              </blockquote>
+        </div>
+        <div class= "jumbotron">
+          <div class="scrollclass">
+            <div class="card storecard">
+              <div class="row card-body">
+                <img class="col-sm-3" src="https://media1.s-nbcnews.com/i/newscms/2019_49/3133051/191204-dollar-general-se-132p_be973efa5ab4c4c36252c1b2464e41d0.jpg" alt="Store Image"/>
+                <div class="col-sm-6">
+                   <h5 class="card-title">THIS IS A STORE NAME</h5>
+                    <p class="card-text">1 Main Street, Somewhere</p>
+                    <a href="#" class="btn btn-primary">MAPS INTERATION BUTTON (MAYBE REMOVE ON MOBILE?)</a>
+                 </div>
+             </div>
             </div>
           </div>
         </div>
       </div>
-    </li>
-    <li>
-      
-    </li>
-  </ul>
+      <div class="col-sm-6">
+        <div id="map"></div>
+        <script>
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -34.397, lng: 150.644},
+            zoom: 8
+          });
+        </script>
+      </div>
+    </div>
+  </div>
 </body> 
 </html>

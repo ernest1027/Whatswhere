@@ -1,9 +1,9 @@
 .scrollclass{
-    height: 200px;
+    height: 100%;
     overflow-y: scroll;
 }
 
+#map {
+    height: 100%;
+  }
 
-.mappagecontainer {
-    list-style-type: none;
-}
