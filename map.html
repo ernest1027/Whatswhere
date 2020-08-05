@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 
 <head>
   <title>Map</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
+
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-  crossorigin="anonymous">
+    crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-  integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/844c0f9883.js" crossorigin="anonymous"></script>
   <script defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiHfol2cwmJELs70oalCgdg94syFcM4nc&callback=initMap">
-</script>
-<script src="map.js"></script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiHfol2cwmJELs70oalCgdg94syFcM4nc&callback=initMap">
+    </script>
+  <script src="map.js"></script>
 </head>
 
-<body class="vh-100 d-flex flex-column">
+<body class="h-100 d-flex flex-column">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
@@ -39,7 +39,8 @@
           <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
             Dropdown
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -52,44 +53,123 @@
       </ul>
     </div>
   </nav>
-  
+
   <div class="container-fluid flex-fill d-flex">
     <div class="row flex-fill">
-      <div class="col-lg-6 mt-3">
-        <div>
-          <div class="scrollclass pb-3">
-            <div class="md-form shadow active-cyan-2 mt-3 mb-3 ml-5 mr-5 sticky-top">
-              <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+      <div class="col-lg-6 mt-3 d-flex">
+        <div class="scrollclass d-flex flex-column pb-3">
+          <div class="md-form shadow active-cyan-2 mt-3 mb-3 ml-5 mr-5 sticky-top">
+            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+          </div>
+          <div id="cardlist">
+            <div class="card shadow ml-3 mr-3 mb-4">
+              <div class="d-flex">
+                <div class="img-square-wrapper">
+                  <img id="storecardimg"
+                    src="https://www.supermarketnews.com/sites/supermarketnews.com/files/styles/article_featured_retina/public/Loblaws-supermarket-storefront.png"
+                    style="height: 180px; width: 300px;">
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title" id="storecardname">Loblaws</h4>
+                  <p class="card-text"><i class="fa fa-directions"></i> 10 min drive</p>
+                </div>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted promoted-footer">PROMOTED</small>
+                <div class="text-right" style="float: right;">
+                  <button type="button" class="btn btn-outline-primary btn-sm icon-sq-button"><i
+                      class="fa fa-bookmark"></i></button>
+                </div>
+              </div>
             </div>
             <div class="card shadow ml-3 mr-3 mb-4">
               <div class="d-flex">
                 <div class="img-square-wrapper">
-                  <img
-                  src="https://www.supermarketnews.com/sites/supermarketnews.com/files/styles/article_featured_retina/public/Loblaws-supermarket-storefront.png"
-                  style="height: 180px; width: 300px;">
+                  <img id="storecardimg"
+                    src="https://www.supermarketnews.com/sites/supermarketnews.com/files/styles/article_featured_retina/public/Loblaws-supermarket-storefront.png"
+                    style="height: 180px; width: 300px;">
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">Loblaws</h4>
-                  <p class="card-text">10 min drive</p>
+                  <h4 class="card-title" id="storecardname">Loblaws</h4>
+                  <p class="card-text"><i class="fa fa-directions"></i> 10 min drive</p>
                 </div>
               </div>
               <div class="card-footer">
-                <small class="text-muted"
-                style="padding-right: 10px; float: left; height: 30px; line-height: 30px; text-align: center;">PROMOTED</small>
+                <small class="text-muted promoted-footer">PROMOTED</small>
                 <div class="text-right" style="float: right;">
                   <button type="button" class="btn btn-outline-primary btn-sm icon-sq-button"><i
-                    class="fa fa-bookmark"></i></button>
-                  </div>
+                      class="fa fa-bookmark"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="card shadow ml-3 mr-3 mb-4">
+              <div class="d-flex">
+                <div class="img-square-wrapper">
+                  <img id="storecardimg"
+                    src="https://www.supermarketnews.com/sites/supermarketnews.com/files/styles/article_featured_retina/public/Loblaws-supermarket-storefront.png"
+                    style="height: 180px; width: 300px;">
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title" id="storecardname">Loblaws</h4>
+                  <p class="card-text"><i class="fa fa-directions"></i> 10 min drive</p>
+                </div>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted promoted-footer">PROMOTED</small>
+                <div class="text-right" style="float: right;">
+                  <button type="button" class="btn btn-outline-primary btn-sm icon-sq-button"><i
+                      class="fa fa-bookmark"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="card shadow ml-3 mr-3 mb-4">
+              <div class="d-flex">
+                <div class="img-square-wrapper">
+                  <img id="storecardimg"
+                    src="https://www.supermarketnews.com/sites/supermarketnews.com/files/styles/article_featured_retina/public/Loblaws-supermarket-storefront.png"
+                    style="height: 180px; width: 300px;">
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title" id="storecardname">Loblaws</h4>
+                  <p class="card-text"><i class="fa fa-directions"></i> 10 min drive</p>
+                </div>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted promoted-footer">PROMOTED</small>
+                <div class="text-right" style="float: right;">
+                  <button type="button" class="btn btn-outline-primary btn-sm icon-sq-button"><i
+                      class="fa fa-bookmark"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="card shadow ml-3 mr-3 mb-4">
+              <div class="d-flex">
+                <div class="img-square-wrapper">
+                  <img id="storecardimg"
+                    src="https://www.supermarketnews.com/sites/supermarketnews.com/files/styles/article_featured_retina/public/Loblaws-supermarket-storefront.png"
+                    style="height: 180px; width: 300px;">
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title" id="storecardname">Loblaws</h4>
+                  <p class="card-text"><i class="fa fa-directions"></i> 10 min drive</p>
+                </div>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted promoted-footer">PROMOTED</small>
+                <div class="text-right" style="float: right;">
+                  <button type="button" class="btn btn-outline-primary btn-sm icon-sq-button"><i
+                      class="fa fa-bookmark"></i></button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div id="map-container-google-1" class="z-depth-1-half map-container col-lg-6 col-12 mt-3 mb-3 mh-50">
-          <div id="map"></div>
-        </div>
+      </div>
+      <div id="map-container-google-1" class="z-depth-1-half map-container col-lg-6 col-12 mt-3 mb-3">
+        <div id="map"></div>
       </div>
     </div>
-  </body>
-  
-  </html>
+  </div>
+</body>
+
+</html>

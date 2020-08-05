@@ -1,9 +1,19 @@
-.scrollclass{
-    overflow-y: auto;
+.scrollclass {
+    flex: 1 1 auto;
+    overflow: hidden;
+    max-height: inherit;
+}
+
+.mapbody {
+    max-height: 100vh;
 }
 
 #map {
     height: 100%;
+}
+
+.map-container {
+    min-height: 60vh;
 }
 
 .icon-sq-button {
@@ -18,4 +28,12 @@
 #availContainer{
 	height: 200px;
 	background:yellow;
+}
+
+.promotedfooter {
+    padding-right: 10px;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
 }
