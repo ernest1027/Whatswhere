@@ -32,6 +32,7 @@
       let service;
       let infowindow;
       var initLoc;
+      var locations =[];
       function initMap(location) {
        
         var loc1 = new google.maps.LatLng(43.6532,-79.3832);
@@ -70,7 +71,7 @@
         console.log(results);
         if (status == google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
-            createMarker(results[i]);
+            locations[i] = createMarker(results[i]);
             }
         }
       }
@@ -80,10 +81,13 @@
           map,
           position: place.geometry.location
         });
-        marker.addListener("click", () => {
-          infowindow.setContent(place.name);
-          infowindow.open(map);
-        });
+        (function (marker) {
+                google.maps.event.addListener(marker, "click", function (e) {
+                    //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
+                    infowindow.setContent("<div style = 'width:2000px;min-height:1000px'>" + "<img src ='https://cdn.discordapp.com/attachments/701580123647901821/740406354036129892/Mudassar.png'>"+ "</div>");
+                    infowindow.open(map, marker);
+                });
+            })(marker);
         return marker;
         
       }
@@ -98,7 +102,15 @@
         service = new google.maps.places.PlacesService(map);
         service.nearbySearch(request, callback);
       }
-      
+      // function gay(){
+      //   for(var i = 0; i<location.length; i++)
+      //   {
+      //       locations[i].addListener("click", () => {
+      //       infowindow.setContent(place.name);
+      //       infowindow.open(map);
+      //     });
+      //   }
+      // }
       //google.maps.event.addDomListener(window, 'load', initMap);
     </script>
   </head>
