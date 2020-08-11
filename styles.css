@@ -9,7 +9,7 @@
 }
 
 #map {
-    height: 1000px;
+    height: 90vh;
 }
 
 .map-container {
@@ -36,4 +36,8 @@
     height: 30px;
     line-height: 30px;
     text-align: center;
+}
+
+#login-button:hover{
+    color: lightgray;
 }
