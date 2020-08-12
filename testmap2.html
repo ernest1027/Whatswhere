@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Place Searches</title>
+    <title>WhatsWhere</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiHfol2cwmJELs70oalCgdg94syFcM4nc&callback=initMap&libraries=places&v=weekly"
@@ -84,7 +84,7 @@
         (function (marker) {
                 google.maps.event.addListener(marker, "click", function (e) {
                     //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
-                    infowindow.setContent("<div style = 'width:2000px;min-height:1000px'>" + "<img src ='https://cdn.discordapp.com/attachments/701580123647901821/740406354036129892/Mudassar.png'>"+ "</div>");
+                    infowindow.setContent("<div style = 'width:262px;min-height:225px'>" + "<img src ='https://cdn.discordapp.com/attachments/701580123647901821/740406354036129892/Mudassar.png'>"+ "</div>");
                     infowindow.open(map, marker);
                 });
             })(marker);
