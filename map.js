@@ -1,14 +1,21 @@
 function handleLocationError(isGeolocationSupported, center) {
-  if (!isGeolocationSupported) // Geo unsupported
-    alert("Geolocation is unsupported in your browser. Please visit this page with a recent browser that supports this feature.");
-  else { // Geo rejected
-    alert("WhatsWhere requires access to your location to perform location-based lookups. Please enable location services and reload the page.");
-    document.getElementById("allow-loc-services-text").innerHTML = "Please enable location services to use WhatsWhere.";
+  if (!isGeolocationSupported)
+    // Geo unsupported
+    alert(
+      "Geolocation is unsupported in your browser. Please visit this page with a recent browser that supports this feature."
+    );
+  else {
+    // Geo rejected
+    alert(
+      "WhatsWhere requires access to your location to perform location-based lookups. Please enable location services and reload the page."
+    );
+    document.getElementById("allow-loc-services-text").innerHTML =
+      "Please enable location services to use WhatsWhere.";
     //if(!alert('Alert For your User!')) {window.location.reload();}
   }
 }
 
-"use strict";
+("use strict");
 
 // This example requires the Places library. Include the libraries=places
 // parameter when you first load the API. For example:
@@ -23,34 +30,34 @@ function initMap(location) {
   infowindow = new google.maps.InfoWindow();
   map = new google.maps.Map(document.getElementById("map"), {
     center: loc1,
-    zoom: 2
-
+    zoom: 2,
   });
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-      map.setCenter(pos);
-      map.setZoom(14);
-      update();
-    }, function () {
-      handleLocationError(true, map.getCenter());
-
-    });
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        map.setCenter(pos);
+        map.setZoom(14);
+        update();
+      },
+      function () {
+        handleLocationError(true, map.getCenter());
+      }
+    );
   } else {
     // Browser doesn't support Geolocation
     handleLocationError(false, map.getCenter());
     update();
   }
   // google.maps.event.addListener(map, 'bounds_changed', function () {
-  //     
+  //
   //     if(true)(
   //       update()
-  //     )    
+  //     )
   // });
-
 }
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -70,26 +77,27 @@ function createMarker(place) {
   (function (marker) {
     google.maps.event.addListener(marker, "click", function (e) {
       //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
-      console.log(place)
-      var placePhoto = "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1024x576.png";
+      console.log(place);
+      var placePhoto =
+        "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1024x576.png";
       try {
-        placePhoto = photos[0].getUrl({ maxWidth: 300, maxHeight: 200 })
-      }
-      catch (e) { }
-      infowindow.setContent(`<img style="max-width:300px; max-height:200px;" src="${placePhoto}"> <br/> <br/> <h4> ${place.name} </h4> <p> ${place.vicinity} </p>`);
-      //Insert HTML 
+        placePhoto = photos[0].getUrl({ maxWidth: 300, maxHeight: 200 });
+      } catch (e) {}
+      infowindow.setContent(
+        `<img style="max-width:300px; max-height:200px;" src="${placePhoto}"> <br/> <br/> <h4> ${place.name} </h4> <p> ${place.vicinity} </p>`
+      );
+      //Insert HTML
       infowindow.open(map, marker);
     });
   })(marker);
   return marker;
-
 }
 //google.maps.event.addDomListener(window, 'load', update);
 function update() {
   const request = {
     location: map.getCenter(),
-    radius: '10000',
-    type: ['supermarket']
+    radius: "10000",
+    type: ["supermarket"],
   };
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, callback);
@@ -109,11 +117,11 @@ function updateCards(results) {
   var html = "";
   for (var i = 0; i < results.length; i++) {
     var result = results[i];
-    var placePhoto = "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1024x576.png";
+    var placePhoto =
+      "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1024x576.png";
     try {
       placePhoto = result.photos[0].getUrl();
-    }
-    catch (e) { }
+    } catch (e) {}
     html += `
         <div class="card shadow ml-3 mr-3 mb-4">
               <div class="d-flex">
