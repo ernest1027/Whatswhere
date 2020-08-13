@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
+    <script src="./recipeFinder.js"></script>
+    <link rel="stylesheet" href="./recipeFinder.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -58,39 +59,19 @@
     <div class="col-md-4 offset-md-4 mt-5">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username">
-            <div class="input-group-append">
-            </div>
+            <div class="input-group-append"></div>
         </div>
     </div>
 
 
     <div class="container-fluid">
-      <div class="row">
-          <div class="col-12 mt-3">
-              <div class="card custom-card shadow">
-                  <div style="display: flex; flex: 1 1 auto;">
-                      <div class="img-square-wrapper">
-                          <img class="" src="https://www.simplyrecipes.com/wp-content/uploads/2009/09/caesar-salad-horiz-a-1800.jpg" alt="Card image cap" style="height: 180px; width: 300px;">
-                      </div>
-                      <div class="card-body">
-                          <h4 class="card-title">Caesar Salad</h4>
-                          <p class="card-text">Calories: <b>210</b></p>
-                          <p class="card-text">Serving size: <b>1 person</b></p>
-                          <p class="card-text">Time to make: <b>10 minutes</b></p>
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                      <small class="text-muted" style="padding-right: 10px;">Tags:</small>
-                      <button type="button" class="btn btn-outline-success btn-sm">Vegan</button>
-                      <button type="button" class="btn btn-outline-success btn-sm">Healthy</button>
-                      <div class="text-right" style="float: right;">
-                        <button type="button" class="btn btn-outline-primary btn-sm icon-sq-button"><i class="fa fa-bookmark"></i></button>
-                      </div>
-                  </div>
-              </div>
+        <div class="row">
+          <div class="col-12 mt-3" id="recipe-cards">
+            <div class="loader"></div> 
           </div>
-      </div>
-  </div>
+        </div>
+    </div>
+</div>
    
 </body>
 </html>

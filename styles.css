@@ -1,28 +1,28 @@
 .scrollclass {
-    flex: 1 1 auto;
-    overflow: hidden;
-    max-height: inherit;
+  flex: 1 1 auto;
+  overflow: hidden;
+  max-height: inherit;
 }
 
 .mapbody {
-    max-height: 100vh;
+  max-height: 100vh;
 }
 
 #map {
-    height: 1000px;
+  height: 90vh;
 }
 
 .map-container {
-    min-height: 60vh;
+  min-height: 60vh;
 }
 
 .icon-sq-button {
-    width: 32px;
-    height: 32px;
+  width: 32px;
+  height: 32px;
 }
 
-.skyblue{
-	background-color: #87ceeb;
+.skyblue {
+  background-color: #87ceeb;
 }
 
 #availContainer{
@@ -30,12 +30,16 @@
     background:white;
     border-color: black;
     border-width: 2px 2px;
-}
+
 
 .promotedfooter {
-    padding-right: 10px;
-    float: left;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
+  padding-right: 10px;
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+
+#login-button:hover {
+  color: lightgray;
 }
