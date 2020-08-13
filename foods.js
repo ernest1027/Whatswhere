@@ -12,7 +12,7 @@ function addFood(food) {
     {
         itemNum = snapshot.val();
     });
-    firebase.database().ref("/users/" + userId + '/shoppingList/' + food +"/foodCount").once('value').then(function(snapshot) {
+    firebase.database().ref("/users/" + userId + '/shoppingList/' + food + "/foodCount").once('value').then(function(snapshot) {
         if(snapshot.val()!=null){
             foodNum = snapshot.val();
             console.log(foodNum);
@@ -38,3 +38,6 @@ function updateFood(foodNum, itemNum, userId, food)
         itemCount: itemNum
     });
 }
+// document.getElementById("appleAdd").addEventListener("click", addFood);
+// document.getElementById("orangeAdd").addEventListener("click", addFood);
+// document.getElementById("grapesAdd").addEventListener("click", addFood);

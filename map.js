@@ -82,13 +82,13 @@ function createMarker(place) {
         "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1024x576.png";
       try {
         placePhoto = photos[0].getUrl({ maxWidth: 300, maxHeight: 200 });
-      } catch (e) {}
+      } catch (e) { }
       infowindow.setContent(
         `<img style="max-width:300px; max-height:200px;" src="${placePhoto}">
         <br/><br/>
         <h4>${place.name}</h4>
         <i class="fa fa-directions"></i>
-        <a target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=${place.name}&destination_place_id=${place.place_id}">${place.vicinity}</a>`
+        <a target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(results[i].name)}&destination_place_id=${place.place_id}">${place.vicinity}</a>`
       );
       //Insert HTML
       infowindow.open(map, marker);
@@ -125,32 +125,36 @@ function updateCards(results) {
       "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1024x576.png";
     try {
       placePhoto = result.photos[0].getUrl();
-    } catch (e) {}
+    } catch (e) { }
+    // href="genericstorepage.html?name=${results[i].name}&place_id=${results[i].place_id}&vicinity=${results[i].vicinity}&url=${placePhoto}"
     html += `
         <div class="card shadow ml-3 mr-3 mb-4">
-              <div class="d-flex">
-                <div class="img-square-wrapper">
-                  <img id="storecardimg"
-                    src="${placePhoto}"
-                    style="height: 180px; width: 300px;">
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title" id="storecardname">${results[i].name}</h4>
-                  <p class="card-text">
-                    <i class="fa fa-directions"></i>
-                    <a target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=${results[i].name}&destination_place_id=${results[i].place_id}">${results[i].vicinity}</a>
-                  </p>
-                </div>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted promoted-footer">${promotedFooter}</small>
-                
-                <div class="text-right" style="float: right;">
-                  <button type="button" class="btn btn-outline-primary btn-sm icon-sq-button"><i
-                      class="fa fa-bookmark"></i></button>
-                </div>
-              </div>
+          <div class="d-flex">
+            <div class="img-square-wrapper">
+              <img id="storecardimg"
+                src="${placePhoto}"
+                style="height: 180px; width: 300px;">
             </div>
+            <div class="card-body">
+              <h4 class="card-title" id="storecardname">${results[i].name}</h4>
+              <p class="card-text">
+                <i class="fa fa-directions"></i>
+                <a target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(results[i].name)}&destination_place_id=${results[i].place_id}">${results[i].vicinity}</a>
+              </p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted promoted-footer">${promotedFooter}</small>
+            <div class="text-right" style="float: right;">
+              <button type="button" class="btn btn-outline-primary btn-sm icon-sq-button" onclick="window.open('genericstorepage.html?name=${encodeURIComponent(results[i].name)}&place_id=${results[i].place_id}&vicinity=${results[i].vicinity}&url=${encodeURIComponent(placePhoto)}')">
+                <i class="fa fa-eye"></i>
+              </button>
+              <button type="button" class="btn btn-outline-primary btn-sm icon-sq-button">
+                <i class="fa fa-bookmark"></i>
+              </button>
+            </div>
+          </div>
+        </div>
         `;
   }
   document.getElementById("cardlist").innerHTML = html;
