@@ -87,7 +87,8 @@ function createMarker(place) {
         `<img style="max-width:300px; max-height:200px;" src="${placePhoto}">
         <br/><br/>
         <h4>${place.name}</h4>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=${place.name}&destination_place_id=${place.place_id}">${place.vicinity}</a>`
+        <i class="fa fa-directions"></i>
+        <a target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=${place.name}&destination_place_id=${place.place_id}">${place.vicinity}</a>`
       );
       //Insert HTML
       infowindow.open(map, marker);
@@ -137,7 +138,7 @@ function updateCards(results) {
                   <h4 class="card-title" id="storecardname">${results[i].name}</h4>
                   <p class="card-text">
                     <i class="fa fa-directions"></i>
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=${results[i].name}&destination_place_id=${results[i].place_id}">${results[i].vicinity}</a>
+                    <a target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=${results[i].name}&destination_place_id=${results[i].place_id}">${results[i].vicinity}</a>
                   </p>
                 </div>
               </div>
