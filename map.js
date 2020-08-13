@@ -84,7 +84,10 @@ function createMarker(place) {
         placePhoto = photos[0].getUrl({ maxWidth: 300, maxHeight: 200 });
       } catch (e) {}
       infowindow.setContent(
-        `<img style="max-width:300px; max-height:200px;" src="${placePhoto}"> <br/> <br/> <h4> ${place.name} </h4> <p> ${place.vicinity} </p>`
+        `<img style="max-width:300px; max-height:200px;" src="${placePhoto}">
+        <br/><br/>
+        <h4>${place.name}</h4>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=${place.name}&destination_place_id=${place.place_id}">${place.vicinity}</a>`
       );
       //Insert HTML
       infowindow.open(map, marker);

@@ -6,10 +6,11 @@ function addFood(food) {
 
   firebase.database().ref('users/' + userid + '/itemCount').once('value').then(function(snapshot) {
     itemNum = snapshot.val()+1;
+    firebase.database().ref('users/' + userid).set({
+      itemCount: itemNum
+    });
   });
-  firebase.database().ref('users/' + userid).set({
-    itemCount: itemNum
-  });
+  
   
   firebase.database().ref('users/' + userid + "/shoppingList/" + food + "/foodCount").once('value').then(function(snapshot) {
     foodNum = snapshot.val()+1;
