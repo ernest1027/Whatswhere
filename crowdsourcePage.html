@@ -4,13 +4,15 @@
   <title>WhatsWhere</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
+  <link rel="stylesheet" href="slider.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="styles.css">
   
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <script src="https://andreruffert.github.io/rangeslider.js/assets/rangeslider.js/dist/rangeslider.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js"></script>
 </head>
 
 <body>
@@ -79,10 +81,21 @@
   </div>
   <div class="container " id= "availContainer">
     <label for="Availability">Availability</label>
-    <input type="range" class="custom-range"style="margin-width: 10px"  min="0" max="100" id="Availability">
+    <div class="main">
+      <input
+          type="range"
+          name="participants"
+          min="5"
+          max="51"
+          value="20"
+      >
+      <span class="rangeslider__tooltip" id ="range-tooltip"></span>
+    </div>
     <input type="text" class="form-control" style="margin-width: 10px" placeholder="Price" aria-label="Price" aria-describedby="basic-addon1">
     <input class="btn btn-primary"style="margin-width: 10px"  type="submit" value="Submit">
+    <script type="text/javascript" src="crowdsourcePage.js"></script>
+
   </div>
-  <script type="text/javascript" src="crowdsourcePage.js"></script>
+  
 </body> 
 </html>

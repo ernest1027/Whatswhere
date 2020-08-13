@@ -27,7 +27,9 @@
 
 #availContainer{
 	height: 200px;
-	background:yellow;
+    background:white;
+    border-color: black;
+    border-width: 2px 2px;
 }
 
 .promotedfooter {
