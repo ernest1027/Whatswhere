@@ -146,9 +146,9 @@ function updateCards(results) {
           <div class="card-footer">
             <small class="text-muted promoted-footer">${promotedFooter}</small>
             <div class="text-right" style="float: right;">
-              <button type="button" class="btn btn-outline-primary btn-sm icon-sq-button" onclick="window.open('genericstorepage.html?name=${encodeURIComponent(results[i].name)}&place_id=${results[i].place_id}&vicinity=${results[i].vicinity}&url=${encodeURIComponent(placePhoto)}')">
+              <a class="btn btn-outline-primary btn-sm icon-sq-button" href="genericstorepage.html?name=${encodeURIComponent(results[i].name)}&place_id=${results[i].place_id}&vicinity=${results[i].vicinity}&url=${encodeURIComponent(placePhoto)}">
                 <i class="fa fa-eye"></i>
-              </button>
+              </a>
               <button type="button" class="btn btn-outline-primary btn-sm icon-sq-button">
                 <i class="fa fa-bookmark"></i>
               </button>

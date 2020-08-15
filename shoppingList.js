@@ -8,7 +8,9 @@
 //   });
 // }
 firebase.auth().onAuthStateChanged(function (user) {
-  //here
+  if(user.uid != null) {
+    // do things
+  }
 });
 
 function updateFoodCards() {

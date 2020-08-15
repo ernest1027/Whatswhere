@@ -15,7 +15,7 @@ function updatePage(){
 
 document.getElementById("storeName").innerHTML = urlParams.name;
 document.getElementById("address").innerHTML = urlParams.vicinity;
-document.getElementById("StoreImage").innerHTML = '<img style="padding-left: 2em;padding-top: 3em;" src="'+urlParams.url+'" class="rounded float-left" alt="Store Image">';
+document.getElementById("StoreImage").innerHTML = '<img style="padding-left: 2em;padding-top: 3em; width: 30%; height:30%" src="'+urlParams.url+'" class="rounded float-left" alt="Store Image">';
 
 }
 
