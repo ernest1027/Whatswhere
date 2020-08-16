@@ -88,7 +88,7 @@ function createMarker(place) {
         <br/><br/>
         <h4>${place.name}</h4>
         <i class="fa fa-directions"></i>
-        <a target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(results[i].name)}&destination_place_id=${place.place_id}">${place.vicinity}</a>`
+        <a target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(place.name)}&destination_place_id=${place.place_id}">${place.vicinity}</a>`
       );
       //Insert HTML
       infowindow.open(map, marker);

@@ -38,7 +38,12 @@ function addFood(food) {
                 Numppl: 1
 
             });
-
+            firebase.database().ref("/Stores/" + store + "/Foods/" + food + "/Submissions").set({
+                AVG: avail,
+                Numppl: 1
+            
+            });
+        
         }
 
         else {
@@ -46,6 +51,11 @@ function addFood(food) {
                 AVG: submit,
                 Numppl: numppl
 
+            });
+            firebase.database().ref("/Stores/" + store + "/Foods/" + food + "/Submissions").set({
+                AVG: avail,
+                Numppl: 1
+            
             });
         }
     });
