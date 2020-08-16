@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyCiHfol2cwmJELs70oalCgdg94syFcM4nc",
+      authDomain: "notwhatsinstock.firebaseapp.com",
+      databaseURL: "https://notwhatsinstock.firebaseio.com",
+      projectId: "notwhatsinstock",
+      storageBucket: "notwhatsinstock.appspot.com",
+      messagingSenderId: "1064647202473",
+      appId: "1:1064647202473:web:4d5130929846760a72fbb8",
+      measurementId: "G-48Z6RCEC7S"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+</head>
+<body>
+  <script>
+    var list = [  'flour',
+    'white whole wheat flour',
+    'baking powder',
+    'salt',
+    'dried basil',
+    'mozzarella cheese',
+    'olive oil',
+    'whole egg',
+    'non-fat milk',
+    'sundried tomatoes',
+    'butter',
+    'bay leaves',
+    'canned beef broth',
+    'carrot',
+    'celery',
+    'dry red wine',
+    'fresh thyme',
+    'garlic cloves',
+    'ground pork',
+    'ground veal',
+    'parmesan cheese',
+    'pasta',
+    'thick-cut bacon',
+    'tomato puree',
+    'yellow onion',
+    'crayfish',
+    'ice cubes',
+    'onions',
+    'palm oil',
+    'plantain',
+    'root vegetables',
+    'scotch bonnet chili peppers',
+    'shrimp',
+    'tomato',
+    'almond extract',
+    'blueberry jam',
+    'cream cheese',
+    'crescent rolls',
+    'egg',
+    'milk',
+    'sea salt',
+    'sugar',
+    'turbinado sugar',
+    'ham',
+    'orange zest',
+    'apple cider',
+    'apple juice',
+    'orange juice',
+    'orange marmalade',
+    'brown sugar',
+    'fresh rosemary',
+    'fresh ginger',
+    'roasted chicken',
+    'chicken',
+    'garlic',
+    'onion',
+    'cumin',
+    'water',
+    'salsa verde',
+    'tomatillos',
+    'chile',
+    'chiles',
+    'cilantro',
+    'filo dough',
+    'masa flour',
+    'chicken broth',
+    'bacon',
+    'bell pepper',
+    'carrots',
+    'fresh sage leaves',
+    'ground beef',
+    'white bread',
+    'white onion',
+    'whole eggs',
+    'vin santo',
+    'avocados',
+    'eggs',
+    'hash browns',
+    'mayonaise',
+    'salt and pepper',
+    'broccoli',
+    'canned chickpeas',
+    'celery stalks',
+    'cooked lentils',
+    'couscous',
+    'fresh cilantro',
+    'ground cinnamon',
+    'ground cumin',
+    'ground turmeric',
+    'lemon juice',
+    'paprika',
+    'tomato paste',
+    'corn syrup',
+    'duck',
+    'five spice powder',
+    'hoisin sauce',
+    'honey',
+    'rice wine vinegar',
+    'scallions',
+    'white pepper',
+    'cocoa powder',
+    'cottage cheese',
+    'maple syrup',
+    'rolled oats',
+    'cream',
+    'dulce de leche',
+    'egg yolks',
+    'dried porcini mushrooms',
+    'heavy cream',
+    'polenta',
+    'baking potatoes',
+    'beef broth',
+    'curry paste',
+    'fennel powder',
+    'garam masala',
+    'ginger',
+    'lamb stew meat',
+    'mushrooms',
+    'oregano',
+    'plain yogurt',
+    'rosemary',
+    'gingersnaps',
+    'juice of lemon',
+    'lemon zest',
+    'sour cream',
+    'unsalted butter',
+    'of',
+    'chicken base',
+    'bay leaf',
+    'yellow bell pepper',
+    'cannellini beans',
+    'chili powder',
+    'ground coriander',
+    'fresh coriander',
+    'heavy whipping cream',
+    'soured cream',
+    'basil leaves',
+    'basil oil',
+    'strawberries',
+    'whipping cream',
+    'nutella',
+    'instant espresso',
+    'kahlua',
+    'chocolate cookies',
+    'chocolate',
+    'ravioli',
+    'breadcrumbs',
+    'cinnamon',
+    'pecans',
+    'tomatoes',
+    'herbs',
+    'Salt & Pepper',
+    'extra virgin olive oil',
+    'anchovy filets',
+    'canned tomatoes',
+    'farfalle pasta',
+    'italian sausage',
+    'peas',
+    'tomato sauce',
+    'baby arugula',
+    'baby spinach',
+    'fresh dill',
+    'lemon',
+    'multigrain bread',
+    'smoked salmon',
+    'worcestershire sauce',
+    'almond meal',
+    'baking soda',
+    'almond milk',
+    'apple cider vinegar',
+    'vegetable oil',
+    'balsamic vinegar',
+    'brie',
+    'dried cranberries',
+    'pepper',
+    'shallots',
+    'thyme sprigs',
+    'barbecue sauce',
+    'burger buns',
+    'green bell pepper',
+    'hot sauce',
+    'cauliflower',
+    'coconut oil',
+    'cooked brown rice',
+    'grapeseed oil',
+    'low sodium soy sauce',
+    'scallion',
+    'sesame oil',
+    'sesame seeds',
+    'blanched almonds',
+    'egg whites',
+    'quinoa',
+    'dried barberries',
+    'slivered almonds',
+    'pistachios',
+    'coriander',
+    'mint'];
+    
+    function httpGetPromise(url, method = "GET") {
+      return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.open(method, url);
+        xhr.onload = resolve;
+        xhr.onerror = reject;
+        xhr.send();
+      });
+    }
+    
+    var database = firebase.database();
+    var link = []
+    function next(i) {
+      console.log("collecting " + i);
+      httpGetPromise("https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=87c9a93866fb437ba6391bfffad9df6c&metaInformation=true&number=1&query="+list[i]).then(
+      function(e){
+        if(i >= list.length) {
+          uploadToDb();
+          return;
+        }
+        if(JSON.parse(e.target.response)[0]!= undefined){
+          link[i] = ("https://spoonacular.com/cdn/ingredients_500x500/" + JSON.parse(e.target.response)[0].image);
+          
+        }
+        else
+        {
+          console.log("gay2");
+          link[i] =("NA");
+        }
+        next(i+1);
+      },
+      function(e){
+        console.log("error");
+        console.log(e)
+      }
+      );
+    }
+    function uploadToDb() {
+      console.log("uploading");
+      for(var i = 0; i <link.length; i++)
+      {
+        console.log(link[i]);
+        database.ref("/Foods/" + list[i]).set({ 
+          photo:link[i]
+        });
+      }
+    }
+    next(0);
+    // for(var i=0;i<list.length;){
+      //   console.log("gay");
+      //   httpGetPromise("https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=33da3e2c9b7d427290116112124a5f61&metaInformation=true&number=1&query="+list[i]).then(
+      //   function(e){
+        //     if(JSON.parse(e.target.response)[0]!= undefined){
+          //       hash[list[i]] = ("https://spoonacular.com/cdn/ingredients_500x500/" + JSON.parse(e.target.response)[0].image);
+          
+          //     }
+          //     else
+          //     {
+            //       console.log("gay2");
+            //       hash[list[i]] =("NA");
+            //     }
+            //     i++;
+            
+            //   },
+            //   function(e){
+              //     console.log("error");
+              //     console.log(e)
+              //   })
+              
+              // }
+              // for(var i = 0; i <link.length; i++)
+              // {
+                //   console.log(hash[list[i]]);
+                //   database.ref("/Foods/" + list[i]).set({ 
+                  //     photo:hash[link[i]]
+                  //   });
+                  // }
+                </script>
+              </body>
+              </html>

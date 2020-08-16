@@ -13,6 +13,7 @@
     
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
     <script>
       // Your web app's Firebase configuration
@@ -33,47 +34,57 @@
     <script type="text/javascript" src="loginflow.js" defer></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">WhatsWhere</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/recipeFinder.html">Recipe Finder</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/shoppingList.html">Shopping List</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/map.html">Map</a>
-            </li>
-            <li class="nav-item pl-3">
-              <div class="row">
-                <a id="google-login-button" class="btn btn-outline-dark" role="button" style="text-transform:none;">
-                  <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
-                  Sign in with Google
-                </a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">WhatsWhere</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/map.html">Map</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/recipeFinder.html">Recipe Finder</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shoppingList.html">Shopping List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/foods.html">Foods</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/crowdsourcePage.html">Crowdsource</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item pr-3">
+          <div class="row">
+            <a id="google-login-button" class="btn btn-outline-dark" role="button" style="text-transform:none;">
+              <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+              Sign in with Google
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
             
         <div class="jumbotron text-center">
             <h1 id="storeName">Store Name</h1>
             <p id="address">Address and directions...</p>
         </div>
-
-        <div id="StoreImage">
-            <img style="padding-left: 2em;padding-top: 3em;" src="https://www.bnnbloomberg.ca/polopoly_fs/1.1431156!/fileimage/httpImage/image.png_gen/derivatives/landscape_620/longo-s-store-in-woodbridge-ont.png" class="rounded float-left" alt="Store Image">
+        <div class = "row">
+        <div id="StoreImage" class = "col-lg-6 col-md-6 col-sm-6">
+            <img src="https://www.bnnbloomberg.ca/polopoly_fs/1.1431156!/fileimage/httpImage/image.png_gen/derivatives/landscape_620/longo-s-store-in-woodbridge-ont.png"  alt="Store Image">
         </div>
+        <div id="Details" class = "col-lg-6 col-md-6 col-sm-6"></div>
         <script src="genericStorePage.js"></script>
+      </div>
 </body>
 </html>

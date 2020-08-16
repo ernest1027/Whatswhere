@@ -38,7 +38,8 @@ function addFood(food) {
                 Numppl: 1
 
             });
-            firebase.database().ref("/Stores/" + store + "/Foods/" + food + "/Submissions").set({
+            console.log("gay1")
+            firebase.database().ref("/Stores/" + store + "/Foods/" + foods + "/Submissions").set({
                 AVG: avail,
                 Numppl: 1
             
@@ -52,9 +53,11 @@ function addFood(food) {
                 Numppl: numppl
 
             });
-            firebase.database().ref("/Stores/" + store + "/Foods/" + food + "/Submissions").set({
+            console.log("gay2")
+            firebase.database().ref("/Stores/" + store + "/Foods/" + foods + "/Submissions").set({
                 AVG: avail,
                 Numppl: 1
+                
             
             });
         }
