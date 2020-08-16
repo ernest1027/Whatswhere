@@ -33,7 +33,7 @@ function updateFoodCards() {
             <div class="card custom-card shadow">
             <div style="display: flex; flex: 1 1 auto;">
                 <div class="img-square-wrapper">
-                    <img class="" src="" alt="Card image cap" style="width: 300px; height: 200px; object-fit: fill;">
+                    <img class="" src="https://spoonacular.com/cdn/ingredients_500x500/${childNodes.key}.jpg" alt="Card image cap" style="width: 300px; height: 200px; object-fit: fill;">
                 </div>
                 <div class="card-body">
                     <a href="" style="color: inherit;text-decoration: none;"><h4 class="card-title">${childNodes.key}</h4></a>
