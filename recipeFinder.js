@@ -77,7 +77,7 @@ function searchBar(){
                         <img class="" src="${recipes[i].image}" alt="Card image cap" style="width: 300px; height: 200px; object-fit: fill;">
                     </div>
                     <div class="card-body">
-                        <a href="${recipes[i].sourceUrl}" style="color: inherit;text-decoration: none;"><h4 class="card-title">${recipes[i].title}</h4></a>
+                       <h4 class="card-title">${recipes[i].title}</h4>
                         <p class="card-text">Serving size: <b>${recipes[i].servings} people</b></p>
                         <p class="card-text">Time to make: <b>${recipes[i].readyInMinutes} minutes</b></p>
                   </div>
@@ -92,7 +92,7 @@ function searchBar(){
         // }
 
         html += `<div class="text-right" style="float: right;">
-                        <button type="button" class="btn btn-outline-primary btn-sm icon-sq-button"><i class="fa fa-bookmark"></i></button>
+        <p>Click on the card  to see the ingredients and add it to your shopping list</p>
                         </div>
                         </div>
                         </div>

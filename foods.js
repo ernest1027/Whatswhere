@@ -1,3 +1,4 @@
+var foods;
 firebase.auth().onAuthStateChanged(function (user) {
     //here
 });
@@ -44,6 +45,7 @@ function addFood(food) {
     //   popup.classList.add("show");
     // }
 }
+
 function updateFood(foodNum, itemNum, userId, food)
 {   
     console.log(foodNum)
@@ -61,8 +63,10 @@ function updateFoodCards() {
     var html = "";
     firebase.database().ref("/Foods").once('value').then(function(snapshot) 
       {
-            snapshot.forEach(function(childNodes){
-        
+        foods = snapshot.val();
+        for(var child in foods){
+          var childNodes = foods[child];
+            console.log(childNodes);
               //This loop iterates over children of user_id
               //childNodes.key is key of the children of userid such as (20170710)
               //childNodes.val().name;
@@ -76,19 +80,19 @@ function updateFoodCards() {
         <div class="card custom-card shadow">
           <div style="display: flex; flex: 1 1 auto;">
             <div class="img-square-wrapper" style="height: 180px; width: 300px;">
-              <img class="" src="${childNodes.val().photo}"
+              <img class="" src="${childNodes.photo}"
                 alt="Card image cap" style="max-height: 180px; max-width: 300px; height:auto; width:auto; display: block; margin-left: auto; margin-right: auto;">
             </div>
             <div class="card-body">
-              <h4 class="card-title">${childNodes.key}</h4>
+              <h4 class="card-title capitalize">${child}</h4>
               
             </div>
           </div>
           <div class="card-footer">
             <div class="text-right popup" style="float: right;">
-              <button type="button" class="btn btn-outline-primary"onclick="addFood('${childNodes.key}')" ">Add to shopping list</button>
-              <span class="popuptext" id="${childNodes.key}1">Added to shopping list</span>
-              <span class="popuptext" id="${childNodes.key}2">Please login to add to shopping list</span>
+              <button type="button" class="btn btn-outline-primary"onclick="addFood('${child}')" ">Add to shopping list</button>
+              <span class="popuptext" id="${child}1">Added to shopping list</span>
+              <span class="popuptext" id="${child}2">Please login to add to shopping list</span>
             </div>
           </div>
         </div>
@@ -100,9 +104,62 @@ function updateFoodCards() {
               document.getElementById("cards").innerHTML = html;
                 
                 
-        });
+        }
    });
 }
+function updateFoodCardsSearch(){
+  document.getElementById("cards").innerHTML = '<div class="container-fluid"> <div class="row"><div class="col-12 mt-3" id="recipe-cards" ><div class="loader"></div> </div></div></div>';
+  var search = document.getElementById("search").value;
+  var html = "";
+  
+ console.log(search)
+  for(var child in foods){
+    var childNodes = foods[child];
+      console.log(childNodes);
+      if(child.startsWith(search))
+      {
+        //This loop iterates over children of user_id
+        //childNodes.key is key of the children of userid such as (20170710)
+        //childNodes.val().name;
+        //childNodes.val().time;
+        //childNodes.val().rest_time;
+        //childNodes.val().interval_time;
+        html += `
+<div class="container-fluid">
+<div class="row">
+<div class="col-12 mt-3">
+  <div class="card custom-card shadow">
+    <div style="display: flex; flex: 1 1 auto;">
+      <div class="img-square-wrapper" style="height: 180px; width: 300px;">
+        <img class="" src="${childNodes.photo}"
+          alt="Card image cap" style="max-height: 180px; max-width: 300px; height:auto; width:auto; display: block; margin-left: auto; margin-right: auto;">
+      </div>
+      <div class="card-body">
+        <h4 class="card-title capitalize">${child}</h4>
+        
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="text-right popup" style="float: right;">
+        <button type="button" class="btn btn-outline-primary"onclick="addFood('${child}')" ">Add to shopping list</button>
+        <span class="popuptext" id="${child}1">Added to shopping list</span>
+        <span class="popuptext" id="${child}2">Please login to add to shopping list</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+`;
+          // console.log(html);
+        document.getElementById("cards").innerHTML = html;
+      }
+      document.getElementById("cards").innerHTML = html;
+          
+  }
+}
+   
+            
 
 
     updateFoodCards();

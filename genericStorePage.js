@@ -14,7 +14,7 @@ var urlParams;
 function updatePage(){
 
 document.getElementById("storeName").innerHTML = urlParams.name;
-document.getElementById("address").innerHTML = `<a href='https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(urlParams.name)}&destination_place_id=${urlParams.place_id}>"${urlParams.vicinity}'>${urlParams.vicinity}</a>`;
+document.getElementById("address").innerHTML = `<a href='https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(urlParams.name)}&destination_place_id=${urlParams.place_id}>${urlParams.vicinity}'>${urlParams.vicinity}</a>`;
 document.getElementById("StoreImage").innerHTML = '<img  style="height:400px; width: 600px; margin:5%"src="'+urlParams.url+'" class="" alt="Store Image">';
 
 }
@@ -76,20 +76,18 @@ function updateFoodCardsInner(foods, store)
     <div class="col-12 mt-3">
       <div class="card custom-card shadow">
         <div style="display: flex; flex: 1 1 auto;">
-          <div class="img-square-wrapper">
+          <div class="img-square-wrapper" style="width: 300px;">
             <img class="" src="${img}"
-              alt="Card image cap" style="height: 180px; width: 300px; ">
+              alt="Card image cap" style="max-height: 180px; max-width: 300px; height:auto; width:auto; display: block; margin-left: auto; margin-right: auto;">
           </div>
           <div class="card-body">
-            <h4 class="card-title">${childNodes.key}</h4>
+            <h4 class="card-title capitalize">${childNodes.key}</h4>
             <p class="card-text">Availability: <b>${avail}</b></p>
             
           </div>
         </div>
         <div class="card-footer">
-          <small class="text-muted" style="padding-right: 10px;">Tags:</small>
-          <button type="button" class="btn btn-outline-success btn-sm">Vegan</button>
-          <button type="button" class="btn btn-outline-success btn-sm">Healthy</button>
+
           <div class="text-right popup" style="float: right;">
             <button type="button" class="btn btn-outline-primary"onclick="addFood('${childNodes.key}')">Add to shopping list</button>
             <span class="popuptext" id="${childNodes.key}1">Added to shopping list</span>

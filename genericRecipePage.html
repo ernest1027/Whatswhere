@@ -33,6 +33,64 @@
     </script>
     <script type="text/javascript" src="loginflow.js" defer></script>
 </head>
+<style>
+  /* Popup container - can be anything you want */
+  .popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* The actual popup */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
+  
+  /* Popup arrow */
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  /* Toggle this class - hide and show the popup */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+  </style>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">WhatsWhere</a>
@@ -144,14 +202,14 @@
                                 </div>
                                 <div class="card-body">
                                 <h4 class="card-title capitalize">${element.name}</h4>
-                                <p class="card-text">Price: <b>$NA</b></p>
-                                <p class="card-text">Availability: <b>High</b></p>
                                 
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <div class="text-right" style="float: right;">
+                                <div class="text-right popup" style="float: right;">
                                 <button type="button" class="btn btn-outline-primary"onclick="addFood('${element.name}')">Add to shopping list</button>
+                                <span class="popuptext" id="${element.name}1">Added to shopping list</span>
+                                <span class="popuptext" id="${element.name}2">Please login to add to shopping list</span>
                                 </div>
                             </div>
                             </div>
@@ -174,30 +232,34 @@
             )
     
 function addFood(food) {
-    var user = firebase.auth().currentUser;
-    let itemNum = 0;
-    let foodNum = 0;
-    var userId = user.uid;
-    
-    firebase.database().ref("/users/" + userId + "/itemCount/itemCount").once('value').then(function(snapshot) 
-    {
-        itemNum = snapshot.val();
-    });
-    firebase.database().ref("/users/" + userId + '/shoppingList/' + food + "/foodCount").once('value').then(function(snapshot) {
-        if(snapshot.val()!=null){
-            foodNum = snapshot.val();
-            console.log(foodNum);
-        }
-        else{
-            itemNum = itemNum + 1;
-        }
-        foodNum = foodNum + 1;
-        updateFood(foodNum, itemNum, userId, food);
-    });
-    // firebase.database().ref("/users/" + userId + '/shoppingList/' + food).set({
-    //     foodCount: foodNum
-    // });
- 
+  try{
+  var user = firebase.auth().currentUser;
+  let itemNum = 0;
+  let foodNum = 0;
+  var userId = user.uid;
+  firebase.database().ref("/users/" + userId + "/itemCount/itemCount").once('value').then(function(snapshot) 
+  {
+      itemNum = snapshot.val();
+  });
+  firebase.database().ref("/users/" + userId + '/shoppingList/' + food + "/foodCount").once('value').then(function(snapshot) {
+      if(snapshot.val()!=null){
+          foodNum = snapshot.val();
+          console.log(foodNum);
+      }
+      else{
+          itemNum = itemNum + 1;
+      }
+      foodNum = foodNum + 1;
+      updateFood(foodNum, itemNum, userId, food);
+  });
+  var popup = document.getElementById(food+"1");
+  popup.classList.add("show");
+}
+catch(e)
+{
+  var popup = document.getElementById(food+"2");
+  popup.classList.add("show");
+}
 }
 function updateFood(foodNum, itemNum, userId, food)
 {   
