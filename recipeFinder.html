@@ -11,7 +11,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script src="/recipeFinder.js"></script>
-    <link rel="stylesheet" href="/recipeFinder.css">
+    <link rel="stylesheet" href="/loading.css">
     
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
@@ -20,7 +20,7 @@
       // Your web app's Firebase configuration
       var firebaseConfig = {
           apiKey: "AIzaSyCiHfol2cwmJELs70oalCgdg94syFcM4nc",
-          authDomain: "notwhatsinstock.firebaseapp.com",
+          authDomain: "auth.whatswhere.info",
           databaseURL: "https://notwhatsinstock.firebaseio.com",
           projectId: "notwhatsinstock",
           storageBucket: "notwhatsinstock.appspot.com",
@@ -43,23 +43,20 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Stores</a>
+        </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/map.html">Map</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/recipeFinder.html">Recipe Finder</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/shoppingList.html">Shopping List</a>
+          <a class="nav-link" href="/recipeFinder.html">Recipes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/foods.html">Foods</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/crowdsourcePage.html">Crowdsource</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shoppingList.html">Shopping List</a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
@@ -83,7 +80,8 @@
     
     <div class="col-md-4 offset-md-4 mt-5">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username">
+            <input type="text" id = "search" class="form-control" placeholder="Search Recipes..." aria-label="Recipient's username" autocomplete="off">
+            <button class="btn btn-primary" type="button" onclick="searchBar();">Search</button> 
             <div class="input-group-append"></div>
         </div>
     </div>
@@ -91,7 +89,7 @@
 
     <div class="container-fluid">
         <div class="row">
-          <div class="col-12 mt-3" id="recipe-cards">
+          <div class="col-12 mt-3" id="recipe-cards" style="overflow:scroll; height:750px;">
             <div class="loader"></div> 
           </div>
         </div>

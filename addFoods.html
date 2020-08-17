@@ -12,7 +12,7 @@
     // Your web app's Firebase configuration
     var firebaseConfig = {
       apiKey: "AIzaSyCiHfol2cwmJELs70oalCgdg94syFcM4nc",
-      authDomain: "notwhatsinstock.firebaseapp.com",
+      authDomain: "auth.whatswhere.info",
       databaseURL: "https://notwhatsinstock.firebaseio.com",
       projectId: "notwhatsinstock",
       storageBucket: "notwhatsinstock.appspot.com",
@@ -235,46 +235,47 @@
       });
     }
     
-    var database = firebase.database();
-    var link = []
-    function next(i) {
-      console.log("collecting " + i);
-      httpGetPromise("https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=87c9a93866fb437ba6391bfffad9df6c&metaInformation=true&number=1&query="+list[i]).then(
-      function(e){
-        if(i >= list.length) {
-          uploadToDb();
-          return;
-        }
-        if(JSON.parse(e.target.response)[0]!= undefined){
-          link[i] = ("https://spoonacular.com/cdn/ingredients_500x500/" + JSON.parse(e.target.response)[0].image);
+
+    // var link = []
+    // function next(i) {
+    //   console.log("collecting " + i);
+    //   httpGetPromise("https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=87c9a93866fb437ba6391bfffad9df6c&metaInformation=true&number=1&query="+list[i]).then(
+    //   function(e){
+    //     if(i >= list.length) {
+    //       uploadToDb();
+    //       return;
+    //     }
+    //     if(JSON.parse(e.target.response)[0]!= undefined){
+    //       link[i] = ("https://spoonacular.com/cdn/ingredients_500x500/" + JSON.parse(e.target.response)[0].image);
           
-        }
-        else
-        {
-          console.log("gay2");
-          link[i] =("NA");
-        }
-        next(i+1);
-      },
-      function(e){
-        console.log("error");
-        console.log(e)
-      }
-      );
-    }
+    //     }
+    //     else
+    //     {
+    //       link[i] =("NA");
+    //     }
+    //     next(i+1);
+    //   },
+    //   function(e){
+    //     console.log("error");
+    //     console.log(e)
+    //   }
+    //   );
+    // }
+    
+    var database = firebase.database();
     function uploadToDb() {
       console.log("uploading");
-      for(var i = 0; i <link.length; i++)
+      for(var i = 0; i <arr.length; i++)
       {
-        console.log(link[i]);
-        database.ref("/Foods/" + list[i]).set({ 
+        console.log(arr[i]);
+        database.ref("/Foods/" + arr[i]).set({ 
           photo:link[i]
         });
       }
     }
+    
     next(0);
     // for(var i=0;i<list.length;){
-      //   console.log("gay");
       //   httpGetPromise("https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=33da3e2c9b7d427290116112124a5f61&metaInformation=true&number=1&query="+list[i]).then(
       //   function(e){
         //     if(JSON.parse(e.target.response)[0]!= undefined){
@@ -283,7 +284,6 @@
           //     }
           //     else
           //     {
-            //       console.log("gay2");
             //       hash[list[i]] =("NA");
             //     }
             //     i++;

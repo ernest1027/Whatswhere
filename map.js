@@ -106,7 +106,7 @@ function update() {
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, callback);
 }
-// function gay(){
+// function debug(){
 //   for(var i = 0; i<location.length; i++)
 //   {
 //       locations[i].addListener("click", () => {
@@ -146,12 +146,9 @@ function updateCards(results) {
           <div class="card-footer">
             <small class="text-muted promoted-footer">${promotedFooter}</small>
             <div class="text-right" style="float: right;">
-              <a class="btn btn-outline-primary btn-sm icon-sq-button" href="genericstorepage.html?name=${encodeURIComponent(results[i].name)}&place_id=${results[i].place_id}&vicinity=${results[i].vicinity}&url=${encodeURIComponent(placePhoto)}">
-                <i class="fa fa-eye"></i>
+              <a class="btn btn-outline-primary" href="genericstorepage.html?name=${encodeURIComponent(results[i].name)}&place_id=${results[i].place_id}&vicinity=${results[i].vicinity}&url=${encodeURIComponent(placePhoto)}">
+                See stock
               </a>
-              <button type="button" class="btn btn-outline-primary btn-sm icon-sq-button">
-                <i class="fa fa-bookmark"></i>
-              </button>
             </div>
           </div>
         </div>

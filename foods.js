@@ -3,11 +3,12 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 
 function addFood(food) {
-    var user = firebase.auth().currentUser;
+    
+    try{
+      var user = firebase.auth().currentUser;
     let itemNum = 0;
     let foodNum = 0;
     var userId = user.uid;
-    
     firebase.database().ref("/users/" + userId + "/itemCount/itemCount").once('value').then(function(snapshot) 
     {
         itemNum = snapshot.val();
@@ -23,10 +24,25 @@ function addFood(food) {
         foodNum = foodNum + 1;
         updateFood(foodNum, itemNum, userId, food);
     });
+    var popup = document.getElementById(food+"1");
+    popup.classList.add("show");
+  }
+  catch(e)
+  {
+    var popup = document.getElementById(food+"2");
+    popup.classList.add("show");
+  }
     // firebase.database().ref("/users/" + userId + '/shoppingList/' + food).set({
     //     foodCount: foodNum
     // });
- 
+    // if (userId!= null){
+    // var popup = document.getElementById(food+"1");
+    // popup.classList.add("show");
+    // }
+    // else{
+    //   var popup = document.getElementById(food+"2");
+    //   popup.classList.add("show");
+    // }
 }
 function updateFood(foodNum, itemNum, userId, food)
 {   
@@ -59,23 +75,20 @@ function updateFoodCards() {
       <div class="col-12 mt-3">
         <div class="card custom-card shadow">
           <div style="display: flex; flex: 1 1 auto;">
-            <div class="img-square-wrapper">
+            <div class="img-square-wrapper" style="height: 180px; width: 300px;">
               <img class="" src="${childNodes.val().photo}"
-                alt="Card image cap" style="height: 180px; width: 300px;">
+                alt="Card image cap" style="max-height: 180px; max-width: 300px; height:auto; width:auto; display: block; margin-left: auto; margin-right: auto;">
             </div>
             <div class="card-body">
               <h4 class="card-title">${childNodes.key}</h4>
-              <p class="card-text">Price: <b>$NA</b></p>
-              <p class="card-text">Availability: <b>High</b></p>
               
             </div>
           </div>
           <div class="card-footer">
-            <small class="text-muted" style="padding-right: 10px;">Tags:</small>
-            <button type="button" class="btn btn-outline-success btn-sm">Vegan</button>
-            <button type="button" class="btn btn-outline-success btn-sm">Healthy</button>
-            <div class="text-right" style="float: right;">
-              <button type="button" class="btn btn-outline-primary"onclick="addFood('${childNodes.key}')">Add to shopping List</button>
+            <div class="text-right popup" style="float: right;">
+              <button type="button" class="btn btn-outline-primary"onclick="addFood('${childNodes.key}')" ">Add to shopping list</button>
+              <span class="popuptext" id="${childNodes.key}1">Added to shopping list</span>
+              <span class="popuptext" id="${childNodes.key}2">Please login to add to shopping list</span>
             </div>
           </div>
         </div>
@@ -83,13 +96,15 @@ function updateFoodCards() {
     </div>
   </div>
   `;
-                console.log(html);
+                // console.log(html);
               document.getElementById("cards").innerHTML = html;
                 
                 
         });
    });
-} 
+}
+
+
     updateFoodCards();
 
 // document.getElementById("appleAdd").addEventListener("click", addFood);

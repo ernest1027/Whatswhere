@@ -13,6 +13,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="/loading.css">
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
@@ -27,7 +28,7 @@
     // Your web app's Firebase configuration
     var firebaseConfig = {
       apiKey: "AIzaSyCiHfol2cwmJELs70oalCgdg94syFcM4nc",
-      authDomain: "notwhatsinstock.firebaseapp.com",
+      authDomain: "auth.whatswhere.info",
       databaseURL: "https://notwhatsinstock.firebaseio.com",
       projectId: "notwhatsinstock",
       storageBucket: "notwhatsinstock.appspot.com",
@@ -44,7 +45,64 @@
   <script type="text/javascript" src="foods.js"></script>
   <script type="text/javascript" src="loginflow.js" defer></script>
 </head>
-
+<style>
+  /* Popup container - can be anything you want */
+  .popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* The actual popup */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
+  
+  /* Popup arrow */
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  /* Toggle this class - hide and show the popup */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+  </style>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">WhatsWhere</a>
@@ -55,23 +113,20 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="/">Stores</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/map.html">Map</a>
+          <a class="nav-link" href="/recipeFinder.html">Recipes</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/recipeFinder.html">Recipe Finder</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/shoppingList.html">Shopping List</a>
-        </li>
-        <li class="nav-item">
+        <li class="nav-item  active">
           <a class="nav-link" href="/foods.html">Foods</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/crowdsourcePage.html">Crowdsource</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shoppingList.html">Shopping List</a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
@@ -88,7 +143,7 @@
   </nav>
 
   <div class="jumbotron text-center">
-    <h1>Foods</h1>
+    <h1>Food Finder</h1>
     <p>All your favorite foods in one place</p>
   </div>
 
@@ -102,7 +157,16 @@
   </div>
 
   
-      <div id="cards"></div>
+  <div id="cards" style="overflow:scroll; height:750px;">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 mt-3" id="recipe-cards" >
+          <div class="loader"></div> 
+        </div>
+      </div>
+    </div>
+  </div>
+  
     
   <!-- <div class="container-fluid">
     <div class="row">
@@ -125,7 +189,7 @@
             <button type="button" class="btn btn-outline-success btn-sm">Vegan</button>
             <button type="button" class="btn btn-outline-success btn-sm">Healthy</button>
             <div class="text-right" style="float: right;">
-              <button type="button" class="btn btn-outline-primary"onclick="addFood('apple')"id="appleAdd">Add to shopping List</button>
+              <button type="button" class="btn btn-outline-primary"onclick="addFood('apple')"id="appleAdd">Add to shopping list</button>
             </div>
           </div>
         </div>
@@ -152,7 +216,7 @@
             <button type="button" class="btn btn-outline-success btn-sm">Vegan</button>
             <button type="button" class="btn btn-outline-success btn-sm">Healthy</button>
             <div class="text-right" style="float: right;">
-              <button type="button" class="btn btn-outline-primary" onclick="addFood('orange')"id="orangeAdd">Add to shopping List</button>
+              <button type="button" class="btn btn-outline-primary" onclick="addFood('orange')"id="orangeAdd">Add to shopping list</button>
             </div>
           </div>
         </div>
@@ -179,7 +243,7 @@
             <button type="button" class="btn btn-outline-success btn-sm">Vegan</button>
             <button type="button" class="btn btn-outline-success btn-sm">Healthy</button>
             <div class="text-right" style="float: right;">
-              <button type="button" class="btn btn-outline-primary" id="grapesAdd" onclick="addFood('grapes')">Add to shopping List</button>
+              <button type="button" class="btn btn-outline-primary" id="grapesAdd" onclick="addFood('grapes')">Add to shopping list</button>
             </div>
           </div>
         </div>

@@ -9,88 +9,130 @@
 // }
 firebase.auth().onAuthStateChanged(function (user) {
   if(user.uid != null) {
-    // do things
-  }
+    updateFoodCards();  }
 });
 
 function updateFoodCards() {
   var user = firebase.auth().currentUser;
-  try{
+
   var userId = user.uid;
+ 
+  var foods;
+  firebase.database().ref("/Foods").once('value').then(function(snapshot) 
+    {
+      console.log(snapshot.val())
+      foods = snapshot.val()
+      updateFoodCardsInner(foods, userId);
+    });
+    console.log(foods);
+    console.log(userId);
+
+ 
+  
+  
+}
+function updateFoodCardsInner(foods, userId){
   var html = "";
   firebase.database().ref("/users/" + userId + "/shoppingList").once('value').then(function(snapshot) 
-    {
-          snapshot.forEach(function(childNodes){
-      
-            //This loop iterates over children of user_id
-            //childNodes.key is key of the children of userid such as (20170710)
-            //childNodes.val().name;
-            //childNodes.val().time;
-            //childNodes.val().rest_time;
-            //childNodes.val().interval_time;
-            html += `
-            <div style="padding-bottom: 20px;">
-            <div class="card custom-card shadow">
-            <div style="display: flex; flex: 1 1 auto;">
-                <div class="img-square-wrapper">
-                    <img class="" src="https://spoonacular.com/cdn/ingredients_500x500/${childNodes.key}.jpg" alt="Card image cap" style="width: 300px; height: 200px; object-fit: fill;">
-                </div>
-                <div class="card-body">
-                    <a href="" style="color: inherit;text-decoration: none;"><h4 class="card-title">${childNodes.key}</h4></a>
-                    <p class="card-text">Availability: <b></b></p>
-                    <p class="card-text">Number of Item on Shopping List: <b>${childNodes.val().foodCount} items</b></p>
+  {
+        snapshot.forEach(function(childNodes){
+          var img = foods[childNodes.key].photo;
+          console.log(img);
+          //This loop iterates over children of user_id
+          //childNodes.key is key of the children of userid such as (20170710)
+          //childNodes.val().name;
+          //childNodes.val().time;
+          //childNodes.val().rest_time;
+          //childNodes.val().interval_time;
+          html += `
+          <div style="padding-bottom: 20px;">
+          <div class="card custom-card shadow">
+          <div style="display: flex; flex: 1 1 auto;">
+              <div class="img-square-wrapper" style="height: 180px; width: 300px;">
+                  <img class="" src="${img}" alt="Card image cap" style="max-height: 180px; max-width: 300px; height:auto; width:auto; display: block; margin-left: auto; margin-right: auto;">
               </div>
+              <div class="card-body">
+                  <a href="" style="color: inherit;text-decoration: none;"><h4 class="card-title">${childNodes.key}</h4></a>
+                  <p class="card-text">Availability: <b></b></p>
+                  <p class="card-text">Number of Item on Shopping List: <b>${childNodes.val().foodCount} items</b></p>
             </div>
-            <div class="card-footer">`;
+          </div>
+          <div class="card-footer">`;
 
-            html += `<div class="text-right" style="float: right;">
-                            <button type="button" class="btn btn-outline-primary btn-sm icon-sq-button"><i class="fa fa-bookmark"></i></button>
-                            </div>
-                            </div>
-                            </div>
-                            </div>`;
-              console.log(html);
-            document.getElementById("recipe-cards").innerHTML = html;
-              
-              
-                });
- });
-  } 
-  catch(e){
-    console.log("error")
+          html += `<div class="text-right" style="float: right;">
+                          <button type="button" class="btn btn-outline-danger"onclick="removeOneFood('${childNodes.key}')">Remove one</button>
+                          <button type="button" class="btn btn-outline-danger"onclick="removeAllFood('${childNodes.key}')">Remove all</button>
+                          </div>
+                          </div>
+                          </div>
+                          </div>`;
+           
+          document.getElementById("recipe-cards").innerHTML = html;
+            
+            
+              });
+              document.getElementById("recipe-cards").innerHTML = html;
+});
+document.getElementById("recipe-cards").innerHTML = html;
 
-  } 
+}
+setTimeout(updateFoodCards, 250);
+
+function removeOneFood(food){
+  var user = firebase.auth().currentUser;
+  let itemNum = 0;
+  let foodNum = 0;
+  var userId = user.uid;
+  
+  firebase.database().ref("/users/" + userId + "/itemCount/itemCount").once('value').then(function(snapshot) 
+  {
+      itemNum = snapshot.val();
+  });
+  firebase.database().ref("/users/" + userId + '/shoppingList/' + food + "/foodCount").once('value').then(function(snapshot) {
+      
+          foodNum = snapshot.val();
+          console.log(foodNum);
+     
+          if(foodNum==1){
+            itemNum = itemNum - 1
+          };
+      
+      foodNum = foodNum - 1;
+      updateFood(foodNum, itemNum, userId, food);
+  });
 }
 
-updateFoodCards();
-updateFoodCards();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function removeAllFood(food){
+  var user = firebase.auth().currentUser;
+  let itemNum = 0;
+  let foodNum = 0;
+  var userId = user.uid;
+  firebase.database().ref("/users/" + userId + "/itemCount/itemCount").once('value').then(function(snapshot) 
+  {
+      itemNum = snapshot.val();
+  });
+  updateFood(0,itemNum-1, userId,food)
+}
+function updateFood(foodNum, itemNum, userId, food)
+{   
+    console.log(foodNum)
+    if(foodNum<=0)
+    {
+      firebase.database().ref("/users/" + userId + "/shoppingList/" + food).remove()
+      console.log("hi");
+      
+    }
+    else{
+      firebase.database().ref("/users/" + userId + "/shoppingList/" + food).set({
+        foodCount: foodNum
+    });
+    firebase.database().ref("/users/" + userId + "/itemCount").set({
+        itemCount: itemNum
+    });
+    }
+    console.log("asd");
+    updateFoodCards();
+}
 // function addFood(food) {
 //   var user = firebase.auth().currentUser;
 //   let itemNum = 0;

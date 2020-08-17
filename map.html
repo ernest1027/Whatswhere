@@ -28,7 +28,7 @@
     // Your web app's Firebase configuration
     var firebaseConfig = {
         apiKey: "AIzaSyCiHfol2cwmJELs70oalCgdg94syFcM4nc",
-        authDomain: "notwhatsinstock.firebaseapp.com",
+        authDomain: "auth.whatswhere.info",
         databaseURL: "https://notwhatsinstock.firebaseio.com",
         projectId: "notwhatsinstock",
         storageBucket: "notwhatsinstock.appspot.com",
@@ -53,23 +53,23 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
         <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item active">
           <a class="nav-link" href="/map.html">Map</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/recipeFinder.html">Recipe Finder</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/shoppingList.html">Shopping List</a>
+          <a class="nav-link" href="/recipeFinder.html">Recipes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/foods.html">Foods</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/crowdsourcePage.html">Crowdsource</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shoppingList.html">Shopping List</a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
@@ -91,7 +91,7 @@
         <div class="scrollclass d-flex flex-column pb-3 h-100">
           <div class="md-form shadow active-cyan-2 mt-3 mb-3 ml-5 mr-5 sticky-top">
             <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-            <div id="cardlist">
+            <div id="cardlist" style="overflow:scroll; height:750px;">
               <h3 class="text-center" id="allow-loc-services-text"></h3>
             </div>
           </div>

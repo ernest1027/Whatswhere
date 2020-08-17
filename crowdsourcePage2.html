@@ -39,7 +39,7 @@
   // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyCiHfol2cwmJELs70oalCgdg94syFcM4nc",
-    authDomain: "notwhatsinstock.firebaseapp.com",
+    authDomain: "auth.whatswhere.info",
     databaseURL: "https://notwhatsinstock.firebaseio.com",
     projectId: "notwhatsinstock",
     storageBucket: "notwhatsinstock.appspot.com",
@@ -278,7 +278,7 @@ function autocomplete(inp, arr) {
           b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
           b.innerHTML += arr[i].substr(val.length);
           /*insert a input field that will hold the current array item's value:*/
-          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          b.innerHTML += "<input type='hidden' value=\"" + arr[i] + "\">";
           /*execute a function when someone clicks on the item value (DIV element):*/
               b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
@@ -494,8 +494,8 @@ function handleLocationError(isGeolocationSupported, center) {
     alert(
       "WhatsWhere requires access to your location to perform location-based lookups. Please enable location services and reload the page."
     );
-    document.getElementById("allow-loc-services-text").innerHTML =
-      "Please enable location services to use WhatsWhere.";
+    // document.getElementById("allow-loc-services-text").innerHTML =
+    //   "Please enable location services to use WhatsWhere.";
     //if(!alert('Alert For your User!')) {window.location.reload();}
   }
 }
