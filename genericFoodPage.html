@@ -31,6 +31,7 @@
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
     </script>
+    <link rel="stylesheet" href="loginbutton.css">
     <script type="text/javascript" src="loginflow.js" defer></script>
 </head>
 <style>
@@ -121,8 +122,8 @@
         <li class="nav-item pr-3">
           <div class="row">
             <a id="google-login-button" class="btn btn-outline-dark" role="button" style="text-transform:none;">
-              <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
-              Sign in with Google
+              <img style="width: 20px; padding-top:3px; margin-left:3px; margin-right:3px; float: left;" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+              <div class="logintext">Sign in with Google</div>
             </a>
           </div>
         </li>
@@ -131,22 +132,73 @@
   </nav>
             
         <div class="jumbotron text-center">
-            <h1 id="storeName">Store Name</h1>
-            <h2 id = "score">Here is the What's Where score:</h2>
-            <p><a href="">Click to see what the What's Where score means</a></p>
-            <p id="address">Address and directions...</p>
+            <h1 id="foodName" class="capitalize">Food Name</h1>
         </div>
         <div class = "row">
-        <div id="StoreImage" class = "col-lg-6 col-md-6 col-sm-6">
-            <img src="https://www.bnnbloomberg.ca/polopoly_fs/1.1431156!/fileimage/httpImage/image.png_gen/derivatives/landscape_620/longo-s-store-in-woodbridge-ont.png"  alt="Store Image">
+        <div id="foodImage" class = "col-lg-6 col-md-6 col-sm-6">
+            <img src="https://www.bnnbloomberg.ca/polopoly_fs/1.1431156!/fileimage/httpImage/image.png_gen/derivatives/landscape_620/longo-s-store-in-woodbridge-ont.png"  alt="Food Image">
         </div>
-        <div class = "col-lg-6 col-md-6 col-sm-6">
-      
-        <div id="Details" style="overflow:scroll; height:750px;" >
+        <div id="Details" style="overflow:scroll; height:750px;" class = "col-lg-6 col-md-6 col-sm-6"></div>
+        <script>
+            var urlParams;
+            (window.onpopstate = function () {
+                var match,
+                    pl     = /\+/g,  // Regex for replacing addition symbol with a space
+                    search = /([^&=]+)=?([^&]*)/g,
+                    decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+                    query  = window.location.search.substring(1);
+
+                urlParams = {};
+                while (match = search.exec(query))
+                urlParams[decode(match[1])] = decode(match[2]);
+            })();
+
+        document.getElementById("foodName").innerHTML = urlParams.name;
+        document.getElementById("foodImage").innerHTML = '<img  style="height:400px; width: 600px; margin:5%"src="'+urlParams.url+'" class="" alt="Food Image">';
         
-        </div>
-        </div>
-        <script src="genericStorePage.js"></script>
+        database = firebase.database();
+        html = "";
+        database.ref("/Foods/"+urlParams.name+"/Locations").once('value').then(function(snapshot){
+            if (snapshot.val()==null){
+                document.getElementById("Details").innerHTML = "<p>There is currently no data for this item recorded within the last 48 hours</p>"
+            }
+            else{
+                snapshot.forEach(function(childNodes){
+                var color;
+                var avail = childNodes.val().Submissions.AVG;
+
+                if (avail<10){color="#ff0000"}
+                else if(avail<20){color="#ff8000"}
+                else if(avail<30){color="#ffff00"}
+                else if(avail<40){color="#80ff00"}
+                else{color="#00ff00"}
+
+                avail*=2;
+                if (avail>100){avail = 100}
+
+                    html+=`<div class="card shadow ml-3 mr-3 mb-4">
+          <div class="d-flex">
+            <div class="card-body">
+              <h4 class="card-title" id="storecardname">${childNodes.key.split("-")[0]}</h4>
+              <h2 style="float:right;border-radius: 25px;padding: 20px;background:${color}; width: 90px;text-align:center;">${avail}</h2>
+              <p class="card-text">
+                <i class="fa fa-directions"></i>
+                <a target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=${childNodes.key.split("-")[1]}"> ${childNodes.key.split("-")[1]} </a>
+              </p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="text-right" style="float: right;">
+              
+            </div>
+          </div>
+        </div>`
+        document.getElementById("Details").innerHTML = html;
+                });
+            }
+        });
+        
+        </script>
       </div>
 </body>
 </html>

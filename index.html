@@ -40,6 +40,7 @@
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
   </script>
+  <link rel="stylesheet" href="loginbutton.css">
   <script type="text/javascript" src="loginflow.js" defer></script>
 </head>
 
@@ -53,13 +54,13 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Stores</a>
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/recipeFinder.html">Recipes</a>
         </li>
-        <li>
+        <li class="nav-item">
           <a class="nav-link" href="/foods.html">Foods</a>
         </li>
         <li class="nav-item">
@@ -73,8 +74,8 @@
         <li class="nav-item pr-3">
           <div class="row">
             <a id="google-login-button" class="btn btn-outline-dark" role="button" style="text-transform:none;">
-              <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
-              Sign in with Google
+              <img style="width: 20px; padding-top:3px; margin-left:3px; margin-right:3px; float: left;" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+              <div class="logintext">Sign in with Google</div>
             </a>
           </div>
         </li>
@@ -85,16 +86,15 @@
   <div class="container-fluid flex-fill d-flex">
     <div class="row flex-fill">
       <div class="col-lg-6 mt-3 d-flex">
-        <div class="scrollclass d-flex flex-column pb-3 h-100">
+        <div class="scrollclass d-flex flex-column pb-3">
           <div class="md-form shadow active-cyan-2 mt-3 mb-3 ml-5 mr-5 sticky-top">
-            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-            <div id="cardlist" style="overflow:scroll; height:750px;">
+            <div id="cardlist" style="overflow:scroll; height: 85vh;">
               <h3 class="text-center" id="allow-loc-services-text"></h3>
             </div>
           </div>
         </div>
       </div>
-      <div id="map-container-google-1" style="height: 100% !important" class="z-depth-1-half map-container col-lg-6 col-12 mt-3 mb-3">
+      <div id="map-container-google-1" style="height: 85vh !important" class="z-depth-1-half map-container col-lg-6 col-12 mt-3 mb-3">
         <div id="map"></div>
       </div>
     </div>

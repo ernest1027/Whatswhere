@@ -1,6 +1,7 @@
 .scrollclass {
   flex: 1 1 auto;
-  overflow: hidden;
+  overflow: visible;
+  overflow-x: hidden;
   max-height: inherit;
 }
 
@@ -38,32 +39,6 @@
   height: 30px;
   line-height: 30px;
   text-align: center;
-}
-
-#google-login-button.logged-in {
-  width: 250px;
-  height: 40px;
-  overflow: hidden;
-}
-
-#google-login-button {
-  transition: all 0.5s;
-}
-
-#google-login-button:hover {
-  color: lightgray;
-}
-
-#google-login-button.logged-in:hover {
-  width: 300px;
-}
-
-#google-login-button.logged-in:hover::after {
-  content: "Sign out of WhatsWhere";
-}
-
-#google-login-button.logged-in:hover span {
-  display: none;
 }
 
 body {

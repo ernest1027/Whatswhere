@@ -1,5 +1,5 @@
-var loginBtnHtml = `<img width="20px" style="padding-top:3px; margin-left:3px; margin-right:3px; float: left;" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />Sign in with Google`;
-var logoutBtnHtml = `<img width="20px" style="padding-top:3px; margin-left:3px; margin-right:3px; float: left;" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" /><span class="signoutbtn">`;
+var loginBtnHtml = `<img style="width: 20px; padding-top:3px; margin-left:3px; margin-right:3px; float: left;" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" /><div class="logintext">Sign in with Google</div>`;
+var logoutBtnHtml = `<img style="width: 20px; padding-top:3px; margin-left:3px; margin-right:3px; float: left;" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" /><span class="signouttext">`;
 
 function signInGoogle() {
   if (!firebase.auth().currentUser) {
@@ -28,6 +28,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     // document.getElementById('quickstart-sign-in').textContent = 'Sign out';
     // document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
     googleLoginBtn.innerHTML = logoutBtnHtml + "Logged in as " + user.displayName + "</span>";
+    googleLoginBtn.classList.remove("logged-out");
     googleLoginBtn.classList.add("logged-in");
     googleLoginBtn.removeEventListener("click", signInGoogle);
     googleLoginBtn.addEventListener("click", signOut);
@@ -48,11 +49,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     googleLoginBtn.removeEventListener("click", signOut);
     googleLoginBtn.addEventListener("click", signInGoogle);
     googleLoginBtn.classList.remove("logged-in");
-    // document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
-    // document.getElementById('quickstart-sign-in').textContent = 'Sign in with Google';
-    // document.getElementById('quickstart-account-details').textContent = 'null';
-    // document.getElementById('quickstart-oauthtoken').textContent = 'null';
+    googleLoginBtn.classList.add("logged-out");
   }
-  //document.getElementById('quickstart-sign-in').disabled = false;
 });
 

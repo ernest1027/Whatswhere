@@ -8,12 +8,14 @@
 //   });
 // }
 firebase.auth().onAuthStateChanged(function (user) {
-  if(user.uid != null) {
+  if(user != null && user.uid != null) {
     updateFoodCards();  }
 });
 
 function updateFoodCards() {
   var user = firebase.auth().currentUser;
+  if (user == null)
+    return;
 
   var userId = user.uid;
  

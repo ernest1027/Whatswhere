@@ -31,23 +31,35 @@ function checkDB(){
     });
 }
 function updateFoodCards(store) {
- 
+  var user = firebase.auth().currentUser;
+
+  var userId = user.uid;
   var foods;
+  var shop;
+  firebase.database().ref("/users/"+userId+"/shoppingList").once('value').then(function(snapshot) 
+    {
+      shop = snapshot.val();
+      //console.log(snapshot.val())
   firebase.database().ref("/Foods").once('value').then(function(snapshot) 
     {
       console.log(snapshot.val())
       foods = snapshot.val()
-      updateFoodCardsInner(foods, store);
+      updateFoodCardsInner(foods, store,shop);
     });
-    
+  });
 
 } 
-function updateFoodCardsInner(foods, store)
+function updateFoodCardsInner(foods, store,shop)
 {
-  var html = "";
+  var html = ""; 
+  var shopNames=Object.keys(shop);
+  console.log(shopNames);
+  var score = 0;
+  var cnt = shopNames.length;
   firebase.database().ref("/Stores/" + store + "/Foods").once('value').then(function(snapshot) 
     {
           snapshot.forEach(function(childNodes){
+            if(true){
             var img = foods[childNodes.key].photo;
             var availNum = childNodes.val().Submissions.AVG
             var avail = ""
@@ -102,8 +114,28 @@ function updateFoodCardsInner(foods, store)
               console.log(html);
             document.getElementById("Details").innerHTML = html;
               
-              
+            }   
+            if(shopNames.includes(childNodes.key))
+            {
+              score += availNum*2;
+             
+            }
       });
+      console.log(score);
+ console.log(cnt);
+ if(cnt == 0)
+ {
+    document.getElementById("score").innerHTML = "Here is the What's Where score: 0"
+    
+ }
+ else
+ {
+   if(score/cnt > 100) {
+    score = 100;
+    cnt = 1;
+   }
+  document.getElementById("score").innerHTML = `Here is the What's Where score: ${score/cnt}`
+ }
  });
 }
 function addFood(food) {
@@ -158,5 +190,5 @@ function updateFood(foodNum, itemNum, userId, food)
         itemCount: itemNum
     });
 }
-checkDB();
+setTimeout(checkDB, 250);
 updatePage();

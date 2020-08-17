@@ -58,13 +58,14 @@ function updateFood(foodNum, itemNum, userId, food)
 }
 function updateFoodCards() {
  
-   
+   var cnt  = 0;
     
     var html = "";
     firebase.database().ref("/Foods").once('value').then(function(snapshot) 
       {
         foods = snapshot.val();
         for(var child in foods){
+          if(cnt==10){break;}
           var childNodes = foods[child];
             console.log(childNodes);
               //This loop iterates over children of user_id
@@ -90,6 +91,9 @@ function updateFoodCards() {
           </div>
           <div class="card-footer">
             <div class="text-right popup" style="float: right;">
+            <a class="btn btn-outline-primary" href="genericFoodPage.html?name=${child}&url=${encodeURIComponent(childNodes.photo)}">
+            See stock
+          </a>
               <button type="button" class="btn btn-outline-primary"onclick="addFood('${child}')" ">Add to shopping list</button>
               <span class="popuptext" id="${child}1">Added to shopping list</span>
               <span class="popuptext" id="${child}2">Please login to add to shopping list</span>
@@ -103,7 +107,7 @@ function updateFoodCards() {
                 // console.log(html);
               document.getElementById("cards").innerHTML = html;
                 
-                
+                cnt++;
         }
    });
 }
@@ -111,9 +115,10 @@ function updateFoodCardsSearch(){
   document.getElementById("cards").innerHTML = '<div class="container-fluid"> <div class="row"><div class="col-12 mt-3" id="recipe-cards" ><div class="loader"></div> </div></div></div>';
   var search = document.getElementById("search").value;
   var html = "";
-  
+  var cnt = 0;
  console.log(search)
   for(var child in foods){
+    if(cnt==10){break;}
     var childNodes = foods[child];
       console.log(childNodes);
       if(child.startsWith(search))
@@ -141,6 +146,9 @@ function updateFoodCardsSearch(){
     </div>
     <div class="card-footer">
       <div class="text-right popup" style="float: right;">
+      <a class="btn btn-outline-primary" href="genericFoodPage.html?name=${child}&url=${encodeURIComponent(childNodes.photo)}">
+      See stock
+    </a>
         <button type="button" class="btn btn-outline-primary"onclick="addFood('${child}')" ">Add to shopping list</button>
         <span class="popuptext" id="${child}1">Added to shopping list</span>
         <span class="popuptext" id="${child}2">Please login to add to shopping list</span>
@@ -153,6 +161,7 @@ function updateFoodCardsSearch(){
 `;
           // console.log(html);
         document.getElementById("cards").innerHTML = html;
+        cnt = cnt+1;
       }
       document.getElementById("cards").innerHTML = html;
           
