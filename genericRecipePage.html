@@ -93,8 +93,11 @@
   }
   </style>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">WhatsWhere</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-success">
+    <a class="navbar-brand" href="/">
+      <img src="/WhatsWhere_SK-03.svg" width="50" height="35" alt="">
+      <a class="navbar-brand" href="#">WhatsWhere</a>
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -136,7 +139,7 @@
             
         <div class="jumbotron text-center">
             <h1 id="RecipeName">Recipe Name</h1>
-            <button type="button" class="btn btn-outline-primary"onclick="addAllFoods()">Add all ingredients to shopping list</button>
+            <button type="button" class="btn btn-outline-success"onclick="addAllFoods()">Add all ingredients to shopping list</button>
         </div>
         <div class = "row">
         <div class = "col-lg-6 col-md-6 col-sm-6">
@@ -190,6 +193,7 @@
                 function(e){
                     console.log(e);
                     JSON.parse(e.target.response).ingredients.forEach(element => {
+                        var img = `https://spoonacular.com/cdn/ingredients_500x500/${element.image}`;
                         ingredientsArr.push(element.name);
                         html+=`
                         <div class="container-fluid">
@@ -208,7 +212,10 @@
                             </div>
                             <div class="card-footer">
                                 <div class="text-right popup" style="float: right;">
-                                <button type="button" class="btn btn-outline-primary"onclick="addFood('${element.name}')">Add to shopping list</button>
+                                  <a class="btn btn-outline-success" href="genericFoodPage.html?name=${element.name}&url=${encodeURIComponent(img)}">
+            See stock
+          </a>
+                                <button type="button" class="btn btn-outline-success"onclick="addFood('${element.name}')">Add to shopping list</button>
                                 <span class="popuptext" id="${element.name}1">Added to shopping list</span>
                                 <span class="popuptext" id="${element.name}2">Please login to add to shopping list</span>
                                 </div>

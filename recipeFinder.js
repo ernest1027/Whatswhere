@@ -9,7 +9,7 @@ function httpGetPromise(url, method = "GET") {
 }
 
 function updateRecipeCards() {
-  var html = "";
+  var html = "<h2>Featured Recipes</h2>";
   httpGetPromise(
     "https://api.spoonacular.com/recipes/random?apiKey=4e6d53114ae54af0a78d3f4e631302cd&instructionsRequired=true&number=10&addRecipeInformation=true"
   ).then(

@@ -31,7 +31,8 @@ function checkDB(){
     });
 }
 function updateFoodCards(store) {
-  var user = firebase.auth().currentUser;
+  try{
+    var user = firebase.auth().currentUser;
 
   var userId = user.uid;
   var foods;
@@ -44,15 +45,34 @@ function updateFoodCards(store) {
     {
       console.log(snapshot.val())
       foods = snapshot.val()
-      updateFoodCardsInner(foods, store,shop);
+      updateFoodCardsInner(foods, store,shop, userId);
     });
   });
-
+  }
+  catch(e){
+  
+  var foods;
+  var shop;
+  
+  firebase.database().ref("/Foods").once('value').then(function(snapshot) 
+    {
+      console.log(snapshot.val())
+      foods = snapshot.val()
+      updateFoodCardsInner(foods, store,shop, "na");
+    });
+ 
+  }
 } 
-function updateFoodCardsInner(foods, store,shop)
+function updateFoodCardsInner(foods, store,shop, userId)
 {
   var html = ""; 
-  var shopNames=Object.keys(shop);
+  try{
+    var shopNames=Object.keys(shop);
+  }
+  catch(e){
+    shopNames = []
+  }
+
   console.log(shopNames);
   var score = 0;
   var cnt = shopNames.length;
@@ -101,7 +121,10 @@ function updateFoodCardsInner(foods, store,shop)
         <div class="card-footer">
 
           <div class="text-right popup" style="float: right;">
-            <button type="button" class="btn btn-outline-primary"onclick="addFood('${childNodes.key}')">Add to shopping list</button>
+          <a class="btn btn-outline-success" href="genericFoodPage.html?name=${childNodes.key}&url=${encodeURIComponent(img)}">
+            See other stores
+          </a>
+            <button type="button" class="btn btn-outline-success"onclick="addFood('${childNodes.key}')">Add to shopping list</button>
             <span class="popuptext" id="${childNodes.key}1">Added to shopping list</span>
             <span class="popuptext" id="${childNodes.key}2">Please login to add to shopping list</span>
           </div>
@@ -123,7 +146,15 @@ function updateFoodCardsInner(foods, store,shop)
       });
       console.log(score);
  console.log(cnt);
- if(cnt == 0)
+ console.log(shopNames)
+ if(userId == "na"){
+  document.getElementById("score").innerHTML = "Login to see the What's Where score"
+ }
+ else if(shopNames.length == 0)
+ {
+  document.getElementById("score").innerHTML = "Add items to your shopping list to see the What's Where score"
+ }
+ else if(cnt == 0)
  {
     document.getElementById("score").innerHTML = "Here is the What's Where score: 0"
     
@@ -134,7 +165,7 @@ function updateFoodCardsInner(foods, store,shop)
     score = 100;
     cnt = 1;
    }
-  document.getElementById("score").innerHTML = `Here is the What's Where score: ${score/cnt}`
+  document.getElementById("score").innerHTML = `Here is the What's Where score: ${(score/cnt).toFixed(2)}`
  }
  });
 }

@@ -10,6 +10,10 @@
 firebase.auth().onAuthStateChanged(function (user) {
   if(user != null && user.uid != null) {
     updateFoodCards();  }
+    else
+    {
+      document.getElementById("header").innerHTML = "<h2 >Please Login to see your shopping list</h2>"
+    }
 });
 
 function updateFoodCards() {
@@ -38,8 +42,15 @@ function updateFoodCardsInner(foods, userId){
   firebase.database().ref("/users/" + userId + "/shoppingList").once('value').then(function(snapshot) 
   {
         snapshot.forEach(function(childNodes){
-          var img = foods[childNodes.key].photo;
+          try{
+            var img = foods[childNodes.key].photo;
+          }
+          catch(e)
+          {
+            var img = ""
+          }
           console.log(img);
+          console.log(foods[childNodes.key])
           //This loop iterates over children of user_id
           //childNodes.key is key of the children of userid such as (20170710)
           //childNodes.val().name;
@@ -54,7 +65,7 @@ function updateFoodCardsInner(foods, userId){
                   <img class="" src="${img}" alt="Card image cap" style="max-height: 180px; max-width: 300px; height:auto; width:auto; display: block; margin-left: auto; margin-right: auto;">
               </div>
               <div class="card-body">
-                  <a href="" style="color: inherit;text-decoration: none;"><h4 class="card-title">${childNodes.key}</h4></a>
+                  <a href="" style="color: inherit;text-decoration: none;"><h4 class="card-title capitalized">${childNodes.key}</h4></a>
                   <p class="card-text">Availability: <b></b></p>
                   <p class="card-text">Number of Item on Shopping List: <b>${childNodes.val().foodCount} items</b></p>
             </div>
@@ -62,6 +73,9 @@ function updateFoodCardsInner(foods, userId){
           <div class="card-footer">`;
 
           html += `<div class="text-right" style="float: right;">
+          <a class="btn btn-outline-success" href="genericFoodPage.html?name=${childNodes.key}&url=${encodeURIComponent(img)}">
+            See stock
+          </a>
                           <button type="button" class="btn btn-outline-danger"onclick="removeOneFood('${childNodes.key}')">Remove one</button>
                           <button type="button" class="btn btn-outline-danger"onclick="removeAllFood('${childNodes.key}')">Remove all</button>
                           </div>

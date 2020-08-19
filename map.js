@@ -78,6 +78,12 @@ function createMarker(place) {
     google.maps.event.addListener(marker, "click", function (e) {
       //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
       console.log(place);
+      if(window.location.hash != "") {
+        window.location = window.location.href.replace(window.location.hash, "#" + place.place_id);
+      }
+      else {
+        window.location += "#" + place.place_id;
+      }
       var placePhoto =
         "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1024x576.png";
       try {
@@ -128,10 +134,12 @@ function updateCards(results) {
     } catch (e) { }
     // href="genericstorepage.html?name=${results[i].name}&place_id=${results[i].place_id}&vicinity=${results[i].vicinity}&url=${placePhoto}"
     html += `
+      <a name="${results[i].place_id}">
         <div class="card shadow ml-3 mr-3 mb-4">
           <div class="d-flex">
             <div class="img-square-wrapper">
               <img id="storecardimg"
+                loading="lazy"
                 src="${placePhoto}"
                 style="height: 180px; width: 300px;">
             </div>
@@ -146,12 +154,13 @@ function updateCards(results) {
           <div class="card-footer">
             <small class="text-muted promoted-footer">${promotedFooter}</small>
             <div class="text-right" style="float: right;">
-              <a class="btn btn-outline-primary" href="genericstorepage.html?name=${encodeURIComponent(results[i].name)}&place_id=${results[i].place_id}&vicinity=${results[i].vicinity}&url=${encodeURIComponent(placePhoto)}">
+              <a class="btn btn-outline-success" href="genericstorepage.html?name=${encodeURIComponent(results[i].name)}&place_id=${results[i].place_id}&vicinity=${results[i].vicinity}&url=${encodeURIComponent(placePhoto)}">
                 See stock
               </a>
             </div>
           </div>
         </div>
+      </a>
         `;
   }
   document.getElementById("cardlist").innerHTML = html;

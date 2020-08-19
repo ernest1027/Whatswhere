@@ -75,10 +75,10 @@ function updateFoodCards() {
               //childNodes.val().rest_time;
               //childNodes.val().interval_time;
               html += `
-<div class="container-fluid">
+<div class="container-fluid ">
     <div class="row">
       <div class="col-12 mt-3">
-        <div class="card custom-card shadow">
+        <div class="card custom-card shadow border border-success">
           <div style="display: flex; flex: 1 1 auto;">
             <div class="img-square-wrapper" style="height: 180px; width: 300px;">
               <img class="" src="${childNodes.photo}"
@@ -91,10 +91,10 @@ function updateFoodCards() {
           </div>
           <div class="card-footer">
             <div class="text-right popup" style="float: right;">
-            <a class="btn btn-outline-primary" href="genericFoodPage.html?name=${child}&url=${encodeURIComponent(childNodes.photo)}">
+            <a class="btn btn-outline-success" href="genericFoodPage.html?name=${child}&url=${encodeURIComponent(childNodes.photo)}">
             See stock
           </a>
-              <button type="button" class="btn btn-outline-primary"onclick="addFood('${child}')" ">Add to shopping list</button>
+              <button type="button" class="btn btn-outline-success"onclick="addFood('${child}')" ">Add to shopping list</button>
               <span class="popuptext" id="${child}1">Added to shopping list</span>
               <span class="popuptext" id="${child}2">Please login to add to shopping list</span>
             </div>
@@ -146,10 +146,10 @@ function updateFoodCardsSearch(){
     </div>
     <div class="card-footer">
       <div class="text-right popup" style="float: right;">
-      <a class="btn btn-outline-primary" href="genericFoodPage.html?name=${child}&url=${encodeURIComponent(childNodes.photo)}">
+      <a class="btn btn-outline-success" href="genericFoodPage.html?name=${child}&url=${encodeURIComponent(childNodes.photo)}">
       See stock
     </a>
-        <button type="button" class="btn btn-outline-primary"onclick="addFood('${child}')" ">Add to shopping list</button>
+        <button type="button" class="btn btn-outline-success"onclick="addFood('${child}')" ">Add to shopping list</button>
         <span class="popuptext" id="${child}1">Added to shopping list</span>
         <span class="popuptext" id="${child}2">Please login to add to shopping list</span>
       </div>
