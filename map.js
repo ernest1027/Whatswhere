@@ -154,7 +154,7 @@ function updateCards(results) {
           <div class="card-footer">
             <small class="text-muted promoted-footer">${promotedFooter}</small>
             <div class="text-right" style="float: right;">
-              <a class="btn btn-outline-success" href="genericstorepage.html?name=${encodeURIComponent(results[i].name)}&place_id=${results[i].place_id}&vicinity=${results[i].vicinity}&url=${encodeURIComponent(placePhoto)}">
+              <a class="btn btn-outline-success" href="GenericStorePage.html?name=${encodeURIComponent(results[i].name)}&place_id=${results[i].place_id}&vicinity=${results[i].vicinity}&url=${encodeURIComponent(placePhoto)}">
                 See stock
               </a>
             </div>
