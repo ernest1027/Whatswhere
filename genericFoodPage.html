@@ -157,7 +157,7 @@
             })();
 
         document.getElementById("foodName").innerHTML = urlParams.name;
-        document.getElementById("foodImage").innerHTML = '<img  style="height:400px; width: 600px; margin:5%"src="'+urlParams.url+'" class="" alt="Food Image">';
+        document.getElementById("foodImage").innerHTML = '<div class="img-square-wrapper" style="height: 400px; width: 600px; margin:5%"> <img  style="max-height:400px; max-width: 600px"src="'+urlParams.url+'" class="" alt="Food Image"> </div>';
         
         database = firebase.database();
         html = "";
