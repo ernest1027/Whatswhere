@@ -78,7 +78,7 @@ function updateFoodCards() {
 <div class="container-fluid ">
     <div class="row">
       <div class="col-12 mt-3">
-        <div class="card custom-card shadow border border-success">
+        <div class="card custom-card shadow ">
           <div style="display: flex; flex: 1 1 auto;">
             <div class="img-square-wrapper" style="height: 180px; width: 300px;">
               <img class="" src="${childNodes.photo}"
