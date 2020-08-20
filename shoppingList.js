@@ -65,7 +65,7 @@ function updateFoodCardsInner(foods, userId){
                   <img class="" src="${img}" alt="Card image cap" style="max-height: 180px; max-width: 300px; height:auto; width:auto; display: block; margin-left: auto; margin-right: auto;">
               </div>
               <div class="card-body">
-                  <a href="" style="color: inherit;text-decoration: none;"><h4 class="card-title capitalized">${childNodes.key}</h4></a>
+                  <a href="" style="color: inherit;text-decoration: none;"><h4 class="card-title capitalize">${childNodes.key}</h4></a>
                   <p class="card-text">Availability: <b></b></p>
                   <p class="card-text">Number of Item on Shopping List: <b>${childNodes.val().foodCount} items</b></p>
             </div>
