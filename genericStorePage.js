@@ -14,7 +14,7 @@ var urlParams;
 function updatePage(){
 
 document.getElementById("storeName").innerHTML = urlParams.name;
-document.getElementById("address").innerHTML = `<a href='https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(urlParams.name)}&destination_place_id=${urlParams.place_id}>${urlParams.vicinity}'>${urlParams.vicinity}</a>`;
+document.getElementById("address").innerHTML = `<a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(urlParams.name)}&destination_place_id=${urlParams.place_id}">${urlParams.vicinity}</a>`;
 document.getElementById("StoreImage").innerHTML = '<img  style="height:400px; width: 600px; margin:5%"src="'+urlParams.url+'" class="" alt="Store Image">';
 
 }
