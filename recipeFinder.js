@@ -69,7 +69,7 @@ function searchBar(){
       var recipes = JSON.parse(e.target.response).results;
       console.log(recipes);
       for (var i = 0; i < recipes.length; i++) {
-        html += `<a href="genericRecipePage.html?recipeID=${recipes[i].id}&recipeImage=${encodeURIComponent(recipes[i].image)}&recipeName=${recipes[i].title}" style="text-decoration:none;color:black">
+        html += `<a href="genericRecipePage.html?recipeID=${recipes[i].id}&recipeImage=${encodeURIComponent(recipes[i].image)}&recipeName=${recipes[i].title}&recipeURL=${encodeURIComponent(recipes[i].sourceUrl)}" style="text-decoration:none;color:black">
                 <div style="padding-bottom: 20px;">
                 <div class="card custom-card shadow">
                 <div style="display: flex; flex: 1 1 auto;">
