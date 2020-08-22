@@ -1,12 +1,12 @@
 ```
-Category: Social Distancing, Food delivery
+Category: Social Distancing, Food Delivery
 ```
 
 # WhatsWhere
 
-We highly recommend you try out our app for yourself. Our app went live today (Friday August 21st) and ready to be used by real users and continually iterated on.
+We highly recommend you try out our app for yourself. Our app went live today (Friday, August 21st) and is ready to be used by real users and continually iterated on.
 
-WhatsWhere seeks to enable its users to minimize their contact with others while shopping for essentials. All too often we have gone to stores for a product on sale only to find that it is out of stock and even if you were willing to pay for convenience now need to drive to another store and expose yourself to a whole new set of people. This is obviously inconvenient but in the times we live in, it could even be deadly.
+WhatsWhere seeks to enable its users to minimize their contact with others while shopping for essentials. All too often we have gone to stores for a product on sale only to find that it is out of stock. Even if you were willing to pay for convenience, you now need to drive to another store and expose yourself to a whole new set of people. This is obviously inconvenient, but in the times we live in, it could even be deadly.
 
 ## What's WhatsWhere?
 
@@ -18,7 +18,7 @@ There are four main features that WhatsWhere has available today, which we hope 
 
 * A virtual shopping list that allows the user to determine the best store in the area to go to in order to get all of their items
 
-* A recipe browser for finding ingredients to add to the shopping list
+* A recipe browser for easily finding ingredients and adding them to your shopping list
 
 * Pages allowing the users to submit stock level data while at the store
 
