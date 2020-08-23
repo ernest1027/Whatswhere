@@ -10,7 +10,7 @@ WhatsWhere seeks to enable its users to minimize their contact with others while
 
 ## What's WhatsWhere?
 
-The app simplifies grocery shopping by consolidating your shopping list to the fewest stores possible. This is accomplished through crowdsourced data that our users provide as a community in the demo, but this could just as easily leverage the inventory systems of stores that partner with us. 
+The app simplifies grocery shopping by consolidating your shopping list to the fewest stores possible. This is accomplished through crowdsourced data that our users provide as a community in the demo, but this can just as easily leverage the inventory systems of stores that partner with us. Once our platform gains enough users, stores will be naturally incentivised to provide realtime inventory data.
 
 There are four main features that WhatsWhere has available today, which we hope to augment with more updates in the future.
 
@@ -22,11 +22,11 @@ There are four main features that WhatsWhere has available today, which we hope 
 
 * Pages allowing the users to submit stock level data while at the store
 
-WhatsWhere also provides us insight into local consumer spending habits that could potentially be used to better target other food-related products and services to communities. This data could very well become more valuable than the alternative monetization option of promoted stores. 
+WhatsWhere also provides us insight into local consumer spending habits that can be used to better target other food-related products and services to communities. This data would likely become more valuable than the alternative monetization option of promoted stores. 
 
 ## What's the WhatsWhere Score?
 
-The WhatsWhere score is a number from 0-100 that tells the user how desirable a store is based on their shopping list. A score of 100 would mean that a user can get their shopping list done with ease! The user won't have to worry about picking undesirable produce or fighting over the last bag of chips. We use our proprietary algorithm uses numerous factors to accurately calculate the desirability of each store for each and every user. Simply put, users can always find the store they should go to using the WhatsWhere score.
+The WhatsWhere score is a number from 0-100 that tells the user how desirable a store is based on their shopping list. A score of 100 means that a user can get their shopping list done with ease! The user won't have to worry about picking undesirable produce or fighting over the last bag of chips. We use our proprietary algorithm uses numerous factors to accurately calculate the desirability of each store for each and every user. Simply put, users can always find the store they should go to using the WhatsWhere score.
 
 ## Why WhatsWhere?
 
@@ -46,9 +46,9 @@ We collaborated over Visual Studio Code's Live Share extension and Discord, whic
 
 ## The future of WhatsWhere
 
-We set out to make a product with utility that extends beyond the current pandemic situation we face. Even if there isn't a new normal for our society, our app will still be useful for those who want to be sure of the stock available at stores before they leave the house. With the rise of ecommerce, brick-and-mortar stores will have to leverage their advantage of customers being able to have product in hand without waiting for shipping. Arriving at a grocery store only to find a needed product out of stock damages the experience of stores, and our app is positioned to solve this issue.
+We set out to make a product with utility that extends beyond the current pandemic situation we face. Even after the pandemic, our app will still be useful for those who want to be sure of the stock available at stores before they leave the house. With the rise of ecommerce, brick-and-mortar stores will have to leverage their advantage of customers being able to have product in hand without waiting for shipping. Arriving at a grocery store only to find a needed product out of stock damages the experience of stores, and our app is positioned to solve this issue.
 
-We will, in the near future, integrate means of allowing stores to purchase a promoted position in the store listings to drive traffic. This would not change their scores and ensure that our app is still an imparital means of determining if the store has what users need.
+We will, in the near future, integrate means of allowing stores to purchase a promoted position in the store listings to drive traffic. This would not change their scores and ensure that our app is still an imparital means of determining if the store has what users need. Additionally, once a region gains enough users, we can begin to monetize the platform. Local grocery stores will be charged a subscription fee to be featured on our app. Most stores in the area will be naturally incentivised to pay this fee as it is needed to stay competitive.
 
 ## The Team
 
@@ -70,8 +70,8 @@ Sean makes —but just as often breaks— things in his tech projects. He loves 
 
 ## Watch the pitch!
 
-[![WhatsWhere Pitch](https://img.youtube.com/vi/VIDEOIDHERE/0.jpg)](https://www.youtube.com/watch?v=VIDEOIDHERE "WhatsWhere Pitch")
+[![WhatsWhere Pitch](https://img.youtube.com/vi/Acx27o4kddg/0.jpg)](https://youtu.be/Acx27o4kddg "WhatsWhere Pitch")
 
 ## Check out our ad!
 
-[![WhatsWhere Ad](https://img.youtube.com/vi/p3___ZV61gM/0.jpg)](https://www.youtube.com/watch?v=p3___ZV61gM  "WhatsWhere Ad")
+[![WhatsWhere Ad](https://img.youtube.com/vi/4K7R4PeUj04/0.jpg)](https://youtu.be/4K7R4PeUj04  "WhatsWhere Ad")
