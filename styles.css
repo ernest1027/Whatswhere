@@ -293,3 +293,13 @@ select:focus {
   text-transform: capitalize;
 }
 
+ /* Hide scrollbar for Chrome, Safari and Opera */
+ #cardlist::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#cardlist {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

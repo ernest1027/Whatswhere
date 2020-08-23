@@ -198,34 +198,39 @@
 <form id="regForm" action="/submitted.html" autocomplete="off">
   <h1>Crowdsource Page:</h1>
   <!-- One "tab" for each step in the form: -->
-  <div class="tab">Store:
+  <div class="tab">
+    <div class="main">
+    Store:
     <!--Make sure the form has the autocomplete function switched off:-->
-
     <div class="autocomplete" style="width:300px;">
       <input class="myInput" id="myStore" type="text" name="myStore" placeholder="Store...">
     </div>
-  </div>
-  <div class="tab">Food:
-    <div class="autocomplete" style="width:300px;">
-        <input placeholder="Food..." class="myInput" id="myFood" name="myFood">
     </div>
   </div>
-  <div class="tab">Availability:
-    <div class="container " id= "availContainer">
-        <div class="main">
-          <input
-              type="range"
-              name="Availability"
-              min="1"
-              max="51"
-              value="20"
-          >
-          <span class="rangeslider__tooltip" id ="range-tooltip"></span>
-        </div>
-     </div>
+  <div class="tab">
+    <div class="main">
+      Food:
+      <div class="autocomplete" style="width:300px;">
+          <input placeholder="Food..." class="myInput" id="myFood" name="myFood">
+      </div>
     </div>
-  <div class="tab">Submit:
-
+  </div>
+  <div class="tab">
+      <div class="main pt-5">
+        <input
+            type="range"
+            name="Availability"
+            min="1"
+            max="51"
+            value="20"
+        >
+        <span class="rangeslider__tooltip" id ="range-tooltip"></span>
+      </div>
+    </div>
+  <div class="tab">
+    <div class="main">
+      Press Submit to confirm your submission.
+    </div>
   </div>
   <div style="overflow:auto;">
     <div style="float:right;">
